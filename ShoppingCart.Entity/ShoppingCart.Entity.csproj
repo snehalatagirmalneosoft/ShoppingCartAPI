@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C817D0D-E1F1-49B9-AB0D-1488CA515012}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ShoppingCart.Entity</RootNamespace>
+    <AssemblyName>ShoppingCart.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Cart.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Category.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="City.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Country.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Exception.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCartProducts_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetCountryNames_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Image.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderDetail.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OrderMaster.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Product.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResetPasswordRequest.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCartModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingCartModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCartModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ShoppingCartModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="State.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetActiveCities_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetActiveCountries_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetActiveStates_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetAllCities_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetAllStates_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetAllSubCategories_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCartProduct_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCategoryIdAndSubCategoryID_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCategoryName_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCitiesForCountry_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCities_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCityDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetCountryDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetExceptionDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetProductsByCategory_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetProductsBySubCategory_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetResetRequestDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetRoleList_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetStateDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetStates_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetSubCategoryDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetUserDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_GetUsers_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_LoginUser_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ProductDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_RandomProducts_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ResetPassword_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_SearchActiveProducts_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_Search_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowAllProductList_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowAllProductsForCategory_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowCategoryList_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowOrderDetails_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowOrderProducts_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowOrders_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowProductImages_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowProductList_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowSubCategoryList_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubCategory.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Temp.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserDetail.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserMaster.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRole.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="ShoppingCartModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ShoppingCartModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <None Include="ShoppingCartModel.edmx.diagram">
+      <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ShoppingCartModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
+      <LastGenOutput>ShoppingCartModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ShoppingCartModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
+      <LastGenOutput>ShoppingCartModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
