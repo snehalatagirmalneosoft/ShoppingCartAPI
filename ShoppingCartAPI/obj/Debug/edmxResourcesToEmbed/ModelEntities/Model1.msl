@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="VShoppingCartModelStoreContainer" CdmEntityContainer="VShoppingCartEntities">
+    <EntitySetMapping Name="Cart">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Category">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="VShoppingCartModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exception">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Exception">
+        <MappingFragment StoreEntitySet="Exception">
+          <ScalarProperty Name="ExceptionId" ColumnName="ExceptionId" />
+          <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+          <ScalarProperty Name="ExceptionDetails" ColumnName="ExceptionDetails" />
+          <ScalarProperty Name="ExceptionFileName" ColumnName="ExceptionFileName" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="ExceptionDateTime" ColumnName="ExceptionDateTime" />
+          <ScalarProperty Name="ExceptionStatus" ColumnName="ExceptionStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Images">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Images">
+        <MappingFragment StoreEntitySet="Images">
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetail">
+      <EntityTypeMapping TypeName="VShoppingCartModel.OrderDetail">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderMaster">
+      <EntityTypeMapping TypeName="VShoppingCartModel.OrderMaster">
+        <MappingFragment StoreEntitySet="OrderMaster">
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+          <ScalarProperty Name="ReceiverMobileNumber" ColumnName="ReceiverMobileNumber" />
+          <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
+          <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="ReceiverEmailId" ColumnName="ReceiverEmailId" />
+          <ScalarProperty Name="ReceiverFirstName" ColumnName="ReceiverFirstName" />
+          <ScalarProperty Name="ReceiverLastName" ColumnName="ReceiverLastName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Product">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResetPasswordRequests">
+      <EntityTypeMapping TypeName="VShoppingCartModel.ResetPasswordRequests">
+        <MappingFragment StoreEntitySet="ResetPasswordRequests">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="VShoppingCartModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategory">
+      <EntityTypeMapping TypeName="VShoppingCartModel.SubCategory">
+        <MappingFragment StoreEntitySet="SubCategory">
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Temp">
+      <EntityTypeMapping TypeName="VShoppingCartModel.Temp">
+        <MappingFragment StoreEntitySet="Temp">
+          <ScalarProperty Name="TempId" ColumnName="TempId" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetail">
+      <EntityTypeMapping TypeName="VShoppingCartModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetail">
+          <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="AlternateAddress" ColumnName="AlternateAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserMaster">
+      <EntityTypeMapping TypeName="VShoppingCartModel.UserMaster">
+        <MappingFragment StoreEntitySet="UserMaster">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserPassWord" ColumnName="UserPassWord" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRole">
+      <EntityTypeMapping TypeName="VShoppingCartModel.UserRole">
+        <MappingFragment StoreEntitySet="UserRole">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ViewProductDetails">
+      <EntityTypeMapping TypeName="VShoppingCartModel.ViewProductDetails">
+        <MappingFragment StoreEntitySet="ViewProductDetails">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="Category_IsActive" ColumnName="Category_IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="VShoppingCartModel.Store.GetCartProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.GetCartProducts_Result">
+          <ScalarProperty Name="CartId" ColumnName="CartId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetCountryNames" FunctionName="VShoppingCartModel.Store.GetCountryNames">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.GetCountryNames_Result">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_AddNewProduct" FunctionName="VShoppingCartModel.Store.STP_AddNewProduct" />
+    <FunctionImportMapping FunctionImportName="STP_AddOrder" FunctionName="VShoppingCartModel.Store.STP_AddOrder" />
+    <FunctionImportMapping FunctionImportName="STP_AddProductsToCart" FunctionName="VShoppingCartModel.Store.STP_AddProductsToCart" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteCartProducts" FunctionName="VShoppingCartModel.Store.STP_DeleteCartProducts" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteCategory" FunctionName="VShoppingCartModel.Store.STP_DeleteCategory" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteCity" FunctionName="VShoppingCartModel.Store.STP_DeleteCity" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteCountry" FunctionName="VShoppingCartModel.Store.STP_DeleteCountry" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteException" FunctionName="VShoppingCartModel.Store.STP_DeleteException" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteProduct" FunctionName="VShoppingCartModel.Store.STP_DeleteProduct" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteProductFromCart" FunctionName="VShoppingCartModel.Store.STP_DeleteProductFromCart" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteProductImage" FunctionName="VShoppingCartModel.Store.STP_DeleteProductImage" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteState" FunctionName="VShoppingCartModel.Store.STP_DeleteState" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteSubCategory" FunctionName="VShoppingCartModel.Store.STP_DeleteSubCategory" />
+    <FunctionImportMapping FunctionImportName="STP_DeleteUser" FunctionName="VShoppingCartModel.Store.STP_DeleteUser" />
+    <FunctionImportMapping FunctionImportName="STP_GetActiveCities" FunctionName="VShoppingCartModel.Store.STP_GetActiveCities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetActiveCities_Result">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetActiveCountries" FunctionName="VShoppingCartModel.Store.STP_GetActiveCountries">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetActiveCountries_Result">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetActiveStates" FunctionName="VShoppingCartModel.Store.STP_GetActiveStates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetActiveStates_Result">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetAllCities" FunctionName="VShoppingCartModel.Store.STP_GetAllCities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetAllCities_Result">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetAllStates" FunctionName="VShoppingCartModel.Store.STP_GetAllStates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetAllStates_Result">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetAllSubCategories" FunctionName="VShoppingCartModel.Store.STP_GetAllSubCategories">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetAllSubCategories_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCartProduct" FunctionName="VShoppingCartModel.Store.STP_GetCartProduct">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCartProduct_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="rn" ColumnName="rn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCategoryId" FunctionName="VShoppingCartModel.Store.STP_GetCategoryId" />
+    <FunctionImportMapping FunctionImportName="STP_GetCategoryIdAndSubCategoryID" FunctionName="VShoppingCartModel.Store.STP_GetCategoryIdAndSubCategoryID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCategoryIdAndSubCategoryID_Result">
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCategoryName" FunctionName="VShoppingCartModel.Store.STP_GetCategoryName">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCategoryName_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="DeletedOn" ColumnName="DeletedOn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCities" FunctionName="VShoppingCartModel.Store.STP_GetCities">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCities_Result">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCitiesForCountry" FunctionName="VShoppingCartModel.Store.STP_GetCitiesForCountry">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCitiesForCountry_Result">
+          <ScalarProperty Name="CityId" ColumnName="CityId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCityDetails" FunctionName="VShoppingCartModel.Store.STP_GetCityDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCityDetails_Result">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCountryDetails" FunctionName="VShoppingCartModel.Store.STP_GetCountryDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetCountryDetails_Result">
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetCountryId" FunctionName="VShoppingCartModel.Store.STP_GetCountryId" />
+    <FunctionImportMapping FunctionImportName="STP_GetEmailIdList" FunctionName="VShoppingCartModel.Store.STP_GetEmailIdList" />
+    <FunctionImportMapping FunctionImportName="STP_GetException" FunctionName="VShoppingCartModel.Store.STP_GetException" />
+    <FunctionImportMapping FunctionImportName="STP_GetExceptionDetails" FunctionName="VShoppingCartModel.Store.STP_GetExceptionDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetExceptionDetails_Result">
+          <ScalarProperty Name="ExceptionId" ColumnName="ExceptionId" />
+          <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+          <ScalarProperty Name="ExceptionDetails" ColumnName="ExceptionDetails" />
+          <ScalarProperty Name="ExceptionFileName" ColumnName="ExceptionFileName" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="ExceptionDateTime" ColumnName="ExceptionDateTime" />
+          <ScalarProperty Name="ExceptionStatus" ColumnName="ExceptionStatus" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetProductsByCategory" FunctionName="VShoppingCartModel.Store.STP_GetProductsByCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetProductsByCategory_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="rn" ColumnName="rn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetProductsBySubCategory" FunctionName="VShoppingCartModel.Store.STP_GetProductsBySubCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetProductsBySubCategory_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="rn" ColumnName="rn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetResetRequestDetails" FunctionName="VShoppingCartModel.Store.STP_GetResetRequestDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetResetRequestDetails_Result">
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RequestDateTime" ColumnName="RequestDateTime" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetRoleList" FunctionName="VShoppingCartModel.Store.STP_GetRoleList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetRoleList_Result">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetStateDetails" FunctionName="VShoppingCartModel.Store.STP_GetStateDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetStateDetails_Result">
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetStates" FunctionName="VShoppingCartModel.Store.STP_GetStates">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetStates_Result">
+          <ScalarProperty Name="StateId" ColumnName="StateId" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetSubCategoryDetails" FunctionName="VShoppingCartModel.Store.STP_GetSubCategoryDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetSubCategoryDetails_Result">
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetUserDetails" FunctionName="VShoppingCartModel.Store.STP_GetUserDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetUserDetails_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserPassWord" ColumnName="UserPassWord" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+          <ScalarProperty Name="AlternateAddress" ColumnName="AlternateAddress" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_GetUserIdViaEmailId" FunctionName="VShoppingCartModel.Store.STP_GetUserIdViaEmailId" />
+    <FunctionImportMapping FunctionImportName="STP_GetUserName" FunctionName="VShoppingCartModel.Store.STP_GetUserName" />
+    <FunctionImportMapping FunctionImportName="STP_GetUsers" FunctionName="VShoppingCartModel.Store.STP_GetUsers">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_GetUsers_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_InsertCategories" FunctionName="VShoppingCartModel.Store.STP_InsertCategories" />
+    <FunctionImportMapping FunctionImportName="STP_InsertCity" FunctionName="VShoppingCartModel.Store.STP_InsertCity" />
+    <FunctionImportMapping FunctionImportName="STP_InsertCountry" FunctionName="VShoppingCartModel.Store.STP_InsertCountry" />
+    <FunctionImportMapping FunctionImportName="STP_InsertProduct" FunctionName="VShoppingCartModel.Store.STP_InsertProduct" />
+    <FunctionImportMapping FunctionImportName="STP_InsertState" FunctionName="VShoppingCartModel.Store.STP_InsertState" />
+    <FunctionImportMapping FunctionImportName="STP_InsertSubCategories" FunctionName="VShoppingCartModel.Store.STP_InsertSubCategories" />
+    <FunctionImportMapping FunctionImportName="STP_InsertUser" FunctionName="VShoppingCartModel.Store.STP_InsertUser" />
+    <FunctionImportMapping FunctionImportName="STP_LoginUser" FunctionName="VShoppingCartModel.Store.STP_LoginUser">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_LoginUser_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserPassWord" ColumnName="UserPassWord" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ProductDetails" FunctionName="VShoppingCartModel.Store.STP_ProductDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ProductDetails_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_RandomProducts" FunctionName="VShoppingCartModel.Store.STP_RandomProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_RandomProducts_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="rn" ColumnName="rn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_RegisterCustomer" FunctionName="VShoppingCartModel.Store.STP_RegisterCustomer" />
+    <FunctionImportMapping FunctionImportName="STP_RemoveProductFromCart" FunctionName="VShoppingCartModel.Store.STP_RemoveProductFromCart" />
+    <FunctionImportMapping FunctionImportName="STP_ResetPassword" FunctionName="VShoppingCartModel.Store.STP_ResetPassword">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ResetPassword_Result">
+          <ScalarProperty Name="ReturnCode" ColumnName="ReturnCode" />
+          <ScalarProperty Name="UniqueId" ColumnName="UniqueId" />
+          <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_Search" FunctionName="VShoppingCartModel.Store.STP_Search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_Search_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_SearchActiveProducts" FunctionName="VShoppingCartModel.Store.STP_SearchActiveProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_SearchActiveProducts_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+          <ScalarProperty Name="rn" ColumnName="rn" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowAllProductList" FunctionName="VShoppingCartModel.Store.STP_ShowAllProductList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowAllProductList_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowAllProductsForCategory" FunctionName="VShoppingCartModel.Store.STP_ShowAllProductsForCategory">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowAllProductsForCategory_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowCategoryList" FunctionName="VShoppingCartModel.Store.STP_ShowCategoryList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowCategoryList_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Category_Name" ColumnName="Category_Name" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowOrderDetails" FunctionName="VShoppingCartModel.Store.STP_ShowOrderDetails">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowOrderDetails_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ReceiverFirstName" ColumnName="ReceiverFirstName" />
+          <ScalarProperty Name="ReceiverLastName" ColumnName="ReceiverLastName" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+          <ScalarProperty Name="ReceiverEmailId" ColumnName="ReceiverEmailId" />
+          <ScalarProperty Name="ReceiverMobileNumber" ColumnName="ReceiverMobileNumber" />
+          <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
+          <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowOrderProducts" FunctionName="VShoppingCartModel.Store.STP_ShowOrderProducts">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowOrderProducts_Result">
+          <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowOrders" FunctionName="VShoppingCartModel.Store.STP_ShowOrders">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowOrders_Result">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="ReceiverFirstName" ColumnName="ReceiverFirstName" />
+          <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
+          <ScalarProperty Name="ReceiverLastName" ColumnName="ReceiverLastName" />
+          <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowProductImages" FunctionName="VShoppingCartModel.Store.STP_ShowProductImages">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowProductImages_Result">
+          <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowProductList" FunctionName="VShoppingCartModel.Store.STP_ShowProductList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowProductList_Result">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_ShowSubCategoryList" FunctionName="VShoppingCartModel.Store.STP_ShowSubCategoryList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="VShoppingCartModel.STP_ShowSubCategoryList_Result">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+          <ScalarProperty Name="SubCategory_Name" ColumnName="SubCategory_Name" />
+          <ScalarProperty Name="Current_Status" ColumnName="Current_Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="STP_UpdateCart" FunctionName="VShoppingCartModel.Store.STP_UpdateCart" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateCategories" FunctionName="VShoppingCartModel.Store.STP_UpdateCategories" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateCity" FunctionName="VShoppingCartModel.Store.STP_UpdateCity" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateCountry" FunctionName="VShoppingCartModel.Store.STP_UpdateCountry" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateNewPassword" FunctionName="VShoppingCartModel.Store.STP_UpdateNewPassword" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateProduct" FunctionName="VShoppingCartModel.Store.STP_UpdateProduct" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateProductDetails" FunctionName="VShoppingCartModel.Store.STP_UpdateProductDetails" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateState" FunctionName="VShoppingCartModel.Store.STP_UpdateState" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateSubCategories" FunctionName="VShoppingCartModel.Store.STP_UpdateSubCategories" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateUser" FunctionName="VShoppingCartModel.Store.STP_UpdateUser" />
+    <FunctionImportMapping FunctionImportName="STP_UpdateUserProfile" FunctionName="VShoppingCartModel.Store.STP_UpdateUserProfile" />
+  </EntityContainerMapping>
+</Mapping>
