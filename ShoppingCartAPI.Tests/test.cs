@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ShoppingCartAPI.Tests
 {
-    class test
+    public class test
     {
+        //adfsdf
     }
 }
