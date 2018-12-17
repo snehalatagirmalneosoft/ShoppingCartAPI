@@ -91,6 +91,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\UserApiControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controllers\HomeControllerTest.cs" />
     <Compile Include="Controllers\ValuesControllerTest.cs" />
@@ -102,6 +103,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">
+      <Project>{2e3a2ecb-252a-40f2-b456-0affde400cdf}</Project>
+      <Name>ShoppingCart.Entity</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShoppingCartAPI\ShoppingCartAPI.csproj">
       <Project>{6824CB9C-8996-45D0-9B9D-A3260764BB92}</Project>
       <Name>ShoppingCartAPI</Name>

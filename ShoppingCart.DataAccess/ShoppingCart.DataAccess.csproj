@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShoppingCart.Common\ShoppingCart.Common.csproj">
-      <Project>{d87db532-da8e-4869-8202-8227f07d51c2}</Project>
+      <Project>{D87DB532-DA8E-4869-8202-8227F07D51C2}</Project>
       <Name>ShoppingCart.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">

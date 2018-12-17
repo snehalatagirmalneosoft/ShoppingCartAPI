@@ -312,7 +312,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="ErrorLogFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -327,7 +326,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ShoppingCart.Common\ShoppingCart.Common.csproj">
-      <Project>{D87DB532-DA8E-4869-8202-8227F07D51C2}</Project>
+      <Project>{d87db532-da8e-4869-8202-8227f07d51c2}</Project>
       <Name>ShoppingCart.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj">
@@ -335,7 +334,7 @@
       <Name>ShoppingCart.DataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">
-      <Project>{2E3A2ECB-252A-40F2-B456-0AFFDE400CDF}</Project>
+      <Project>{2e3a2ecb-252a-40f2-b456-0affde400cdf}</Project>
       <Name>ShoppingCart.Entity</Name>
     </ProjectReference>
   </ItemGroup>
