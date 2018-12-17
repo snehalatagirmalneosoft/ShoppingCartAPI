@@ -43,13 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CategoryDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ShoppingCartAPI\ShoppingCartAPI.csproj">
-      <Project>{6824cb9c-8996-45d0-9b9d-a3260764bb92}</Project>
-      <Name>ShoppingCartAPI</Name>
+    <ProjectReference Include="..\ShoppingCart.Common\ShoppingCart.Common.csproj">
+      <Project>{d87db532-da8e-4869-8202-8227f07d51c2}</Project>
+      <Name>ShoppingCart.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">
+      <Project>{2e3a2ecb-252a-40f2-b456-0affde400cdf}</Project>
+      <Name>ShoppingCart.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

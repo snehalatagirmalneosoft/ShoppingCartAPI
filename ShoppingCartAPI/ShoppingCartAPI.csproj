@@ -235,197 +235,12 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoryApiController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserApiController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Cart.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Category.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\City.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Country.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Exception.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\GetCartProducts_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\GetCountryNames_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Images.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\OrderDetail.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\OrderMaster.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Product.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\ResetPasswordRequests.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\ShoppingCartEntities.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShoppingCartEntities.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\ShoppingCartEntities.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\ShoppingCartEntities.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ShoppingCartEntities.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\State.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetActiveCities_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetActiveCountries_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetActiveStates_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetAllCities_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetAllStates_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetAllSubCategories_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCartProduct_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCategoryIdAndSubCategoryID_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCategoryName_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCitiesForCountry_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCities_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCityDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetCountryDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetExceptionDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetProductsByCategory_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetProductsBySubCategory_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetResetRequestDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetRoleList_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetStateDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetStates_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetSubCategoryDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetUserDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_GetUsers_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_LoginUser_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ProductDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_RandomProducts_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ResetPassword_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_SearchActiveProducts_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_Search_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowAllProductList_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowAllProductsForCategory_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowCategoryList_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowOrderDetails_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowOrderProducts_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowOrders_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowProductImages_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowProductList_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\STP_ShowSubCategoryList_Result.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\SubCategory.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\Temp.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\UserDetail.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\UserMaster.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\UserRole.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelEntities\ViewProductDetails.cs">
-      <DependentUpon>ShoppingCartEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountBindingModels.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -442,16 +257,6 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="ModelEntities\ShoppingCartEntities.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoppingCartEntities.edmx</DependentUpon>
-      <LastGenOutput>ShoppingCartEntities.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="ModelEntities\ShoppingCartEntities.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoppingCartEntities.edmx</DependentUpon>
-      <LastGenOutput>ShoppingCartEntities.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -477,13 +282,6 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <EntityDeploy Include="ModelEntities\ShoppingCartEntities.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ShoppingCartEntities.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="ModelEntities\ShoppingCartEntities.edmx.diagram">
-      <DependentUpon>ShoppingCartEntities.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -514,6 +312,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ErrorLogFile\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -525,6 +324,20 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ShoppingCart.Common\ShoppingCart.Common.csproj">
+      <Project>{D87DB532-DA8E-4869-8202-8227F07D51C2}</Project>
+      <Name>ShoppingCart.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.DataAccess\ShoppingCart.DataAccess.csproj">
+      <Project>{2742ba96-53dd-40ac-b22f-73cc6c984cc1}</Project>
+      <Name>ShoppingCart.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">
+      <Project>{2E3A2ECB-252A-40F2-B456-0AFFDE400CDF}</Project>
+      <Name>ShoppingCart.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
