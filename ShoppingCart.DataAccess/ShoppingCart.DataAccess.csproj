@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\ShoppingCartAPI\bin\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,13 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">
-      <Project>{2c817d0d-e1f1-49b9-ab0d-1488ca515012}</Project>
-      <Name>ShoppingCart.Entity</Name>
+    <ProjectReference Include="..\ShoppingCartAPI\ShoppingCartAPI.csproj">
+      <Project>{6824cb9c-8996-45d0-9b9d-a3260764bb92}</Project>
+      <Name>ShoppingCartAPI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

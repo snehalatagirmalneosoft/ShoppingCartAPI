@@ -7,15 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ShoppingCartAPI.ModelEntities
+namespace ShoppingCart.Entity
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class STP_ShowSubCategoryList_Result
+    public partial class ViewProductDetail
     {
+        public int ProductId { get; set; }
         public Nullable<int> CategoryId { get; set; }
-        public int SubCategoryId { get; set; }
-        public string SubCategory_Name { get; set; }
-        public bool Current_Status { get; set; }
+        public string ProductName { get; set; }
+        public decimal Price { get; set; }
+        public string ProductDescription { get; set; }
+        public Nullable<bool> isActive { get; set; }
+        public string CategoryName { get; set; }
+        public bool Category_IsActive { get; set; }
     }
 }

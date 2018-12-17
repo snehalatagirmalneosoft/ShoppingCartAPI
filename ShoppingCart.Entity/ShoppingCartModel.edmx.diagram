@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3e25321d4a7e41debf287dc7ebcdd31f" Name="Diagram1">
+      <Diagram DiagramId="b8389980cb464ed0a1a88b85fe35aa56" Name="Diagram1">
         <EntityTypeShape EntityType="ShoppingCartModel.Cart" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoppingCartModel.Category" Width="1.5" PointX="0.75" PointY="10.25" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoppingCartModel.City" Width="1.5" PointX="15.25" PointY="2.25" IsExpanded="true" />
@@ -21,6 +21,7 @@
         <EntityTypeShape EntityType="ShoppingCartModel.UserDetail" Width="1.5" PointX="5.25" PointY="26.875" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoppingCartModel.UserMaster" Width="1.5" PointX="3" PointY="23.375" IsExpanded="true" />
         <EntityTypeShape EntityType="ShoppingCartModel.UserRole" Width="1.5" PointX="0.75" PointY="26.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShoppingCartModel.ViewProductDetail" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
         <AssociationConnector Association="ShoppingCartModel.FK__Cart__ProductId__02084FDA" ManuallyRouted="false" />
         <AssociationConnector Association="ShoppingCartModel.FK__Cart__ProductId__04CFADEC" ManuallyRouted="false" />
         <AssociationConnector Association="ShoppingCartModel.FK__Cart__ProductId__075714DC" ManuallyRouted="false" />

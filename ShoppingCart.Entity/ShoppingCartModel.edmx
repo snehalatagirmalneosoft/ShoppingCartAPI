@@ -182,6 +182,23 @@
           <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="RoleName" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ShoppingCart.dbo.ViewProductDetails' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ViewProductDetails">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Category_IsActive" />
+          </Key>
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="ProductDescription" Type="nvarchar(max)" />
+          <Property Name="isActive" Type="bit" />
+          <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Category_IsActive" Type="bit" Nullable="false" />
+        </EntityType>
         <Association Name="FK__Cart__ProductId__02084FDA">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
           <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
@@ -1984,6 +2001,18 @@
           <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserMaster" EntityType="Self.UserMaster" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRole" EntityType="Self.UserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ViewProductDetails" EntityType="Self.ViewProductDetails" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ViewProductDetails].[ProductId] AS [ProductId], 
+    [ViewProductDetails].[CategoryId] AS [CategoryId], 
+    [ViewProductDetails].[ProductName] AS [ProductName], 
+    [ViewProductDetails].[Price] AS [Price], 
+    [ViewProductDetails].[ProductDescription] AS [ProductDescription], 
+    [ViewProductDetails].[isActive] AS [isActive], 
+    [ViewProductDetails].[CategoryName] AS [CategoryName], 
+    [ViewProductDetails].[Category_IsActive] AS [Category_IsActive]
+    FROM [dbo].[ViewProductDetails] AS [ViewProductDetails]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK__Cart__ProductId__02084FDA" Association="Self.FK__Cart__ProductId__02084FDA">
             <End Role="Product" EntitySet="Product" />
             <End Role="Cart" EntitySet="Cart" />
@@ -2898,6 +2927,21 @@
           <NavigationProperty Name="UserMasters8" Relationship="Self.FK__UserMaste__RoleI__5D2BD0E6" FromRole="UserRole" ToRole="UserMaster" />
           <NavigationProperty Name="UserMasters9" Relationship="Self.FK__UserMaste__RoleI__662B2B3B" FromRole="UserRole" ToRole="UserMaster" />
           <NavigationProperty Name="UserMasters10" Relationship="Self.FK__UserMaste__RoleI__76B698BF" FromRole="UserRole" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="ViewProductDetail">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="Category_IsActive" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Category_IsActive" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Cart__ProductId__02084FDA">
           <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
@@ -4380,6 +4424,7 @@
           <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
           <EntitySet Name="UserMasters" EntityType="Self.UserMaster" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="ViewProductDetails" EntityType="Self.ViewProductDetail" />
           <AssociationSet Name="FK__Cart__ProductId__02084FDA" Association="Self.FK__Cart__ProductId__02084FDA">
             <End Role="Product" EntitySet="Products" />
             <End Role="Cart" EntitySet="Carts" />
@@ -5683,6 +5728,20 @@
               <MappingFragment StoreEntitySet="UserRole">
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProductDetails">
+            <EntityTypeMapping TypeName="ShoppingCartModel.ViewProductDetail">
+              <MappingFragment StoreEntitySet="ViewProductDetails">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="Category_IsActive" ColumnName="Category_IsActive" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

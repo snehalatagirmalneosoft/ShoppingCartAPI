@@ -43,6 +43,7 @@ namespace ShoppingCart.Entity
         public virtual DbSet<UserDetail> UserDetails { get; set; }
         public virtual DbSet<UserMaster> UserMasters { get; set; }
         public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<ViewProductDetail> ViewProductDetails { get; set; }
     
         public virtual ObjectResult<GetCartProducts_Result> GetCartProducts(Nullable<int> userId)
         {
