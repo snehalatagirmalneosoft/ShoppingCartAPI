@@ -14,6 +14,7 @@ namespace ShoppingCartAPI.Controllers
     public class UserApiController : ApiController
     {
         UserDAL objUserDAL = new UserDAL();
+        ErrorLogger objErrorLogger;
 
         /// <summary>
         /// 2018/12/17 - Deepanjali Yadav - 
@@ -41,6 +42,7 @@ namespace ShoppingCartAPI.Controllers
             }
             catch (System.Exception ex)
             {
+                objErrorLogger.ErrorLog(ex);
                 objResponseData = ResponseHandler<STP_GetUsers_Result>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);
@@ -72,6 +74,7 @@ namespace ShoppingCartAPI.Controllers
             }
             catch (System.Exception ex)
             {
+                objErrorLogger.ErrorLog(ex);
                 objResponseData = ResponseHandler<STP_GetUserDetails_Result>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);

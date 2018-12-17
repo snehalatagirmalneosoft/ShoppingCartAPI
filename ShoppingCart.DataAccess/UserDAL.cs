@@ -5,11 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using ShoppingCart.Entity;
+using ShoppingCart.Common;
 
 namespace ShoppingCart.DataAccess
 {
    public class UserDAL
     {
+        ErrorLogger objErrorLogger;
+        public UserDAL()
+        {
+            objErrorLogger = new ErrorLogger();
+        }
+
         #region CRUD Operation
 
         /// <summary>
@@ -30,6 +37,7 @@ namespace ShoppingCart.DataAccess
             }
             catch (System.Exception ex)
             {
+                objErrorLogger.ErrorLog(ex);
                 throw ex;
             }
         }
@@ -57,6 +65,7 @@ namespace ShoppingCart.DataAccess
             }
             catch (System.Exception ex)
             {
+                objErrorLogger.ErrorLog(ex);
                 throw ex;
             }
         }
