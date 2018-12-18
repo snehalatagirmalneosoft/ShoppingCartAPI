@@ -51,6 +51,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aspnet_Applications.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetPasswordWithFormat_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetPassword_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetUserByName_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Membership_GetUserByUserId_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Paths.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationAllUsers.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_PersonalizationPerUser.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Profile.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Profile_GetProperties_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Roles.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_SchemaVersions.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_Users.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_UsersInRoles_RemoveUsersFromRoles_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="aspnet_WebEvent_Events.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Cart.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
@@ -209,6 +257,33 @@
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewProductDetails.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Applications.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_MembershipUsers.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Profiles.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Roles.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_Users.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_UsersInRoles.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_WebPartState_Paths.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_WebPartState_Shared.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="vw_aspnet_WebPartState_User.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
