@@ -17,21 +17,7 @@ namespace ShoppingCart.Entity
         public int CityId { get; set; }
         public string CityName { get; set; }
         public Nullable<int> StateId { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.DateTime> DeletedOn { get; set; }
-        public bool IsActive { get; set; }
     
         public virtual State State { get; set; }
-        public virtual State State1 { get; set; }
-        public virtual State State2 { get; set; }
-        public virtual State State3 { get; set; }
-        public virtual State State4 { get; set; }
-        public virtual State State5 { get; set; }
-        public virtual State State6 { get; set; }
-        public virtual State State7 { get; set; }
-        public virtual State State8 { get; set; }
-        public virtual State State9 { get; set; }
-        public virtual State State10 { get; set; }
     }
 }

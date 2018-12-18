@@ -17,43 +17,13 @@ namespace ShoppingCart.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserRole()
         {
-            this.UserMasters = new HashSet<UserMaster>();
-            this.UserMasters1 = new HashSet<UserMaster>();
-            this.UserMasters2 = new HashSet<UserMaster>();
-            this.UserMasters3 = new HashSet<UserMaster>();
-            this.UserMasters4 = new HashSet<UserMaster>();
-            this.UserMasters5 = new HashSet<UserMaster>();
-            this.UserMasters6 = new HashSet<UserMaster>();
-            this.UserMasters7 = new HashSet<UserMaster>();
-            this.UserMasters8 = new HashSet<UserMaster>();
-            this.UserMasters9 = new HashSet<UserMaster>();
-            this.UserMasters10 = new HashSet<UserMaster>();
+            this.UserMaster = new HashSet<UserMaster>();
         }
     
         public int RoleId { get; set; }
         public string RoleName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters4 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters5 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters6 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters7 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters8 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters9 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserMaster> UserMasters10 { get; set; }
+        public virtual ICollection<UserMaster> UserMaster { get; set; }
     }
 }

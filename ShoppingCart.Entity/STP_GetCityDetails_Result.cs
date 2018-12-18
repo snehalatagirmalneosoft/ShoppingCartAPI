@@ -15,6 +15,5 @@ namespace ShoppingCart.Entity
     {
         public Nullable<int> StateId { get; set; }
         public string CityName { get; set; }
-        public bool IsActive { get; set; }
     }
 }

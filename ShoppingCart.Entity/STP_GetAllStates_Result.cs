@@ -14,8 +14,7 @@ namespace ShoppingCart.Entity
     public partial class STP_GetAllStates_Result
     {
         public int StateId { get; set; }
-        public Nullable<int> CountryId { get; set; }
         public string StateName { get; set; }
-        public bool IsActive { get; set; }
+        public Nullable<int> CountryId { get; set; }
     }
 }

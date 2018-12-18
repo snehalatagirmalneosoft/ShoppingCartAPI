@@ -16,8 +16,9 @@ namespace ShoppingCart.Entity
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public Nullable<int> ModifiedBy { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<System.DateTime> DeletedOn { get; set; }
     }
 }

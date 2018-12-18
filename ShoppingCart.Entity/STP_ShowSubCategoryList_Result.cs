@@ -17,5 +17,6 @@ namespace ShoppingCart.Entity
         public int SubCategoryId { get; set; }
         public string SubCategory_Name { get; set; }
         public bool Current_Status { get; set; }
+        public string Created_By { get; set; }
     }
 }

@@ -18,12 +18,14 @@ namespace ShoppingCart.Entity
         public string EmailId { get; set; }
         public string UserPassWord { get; set; }
         public bool IsActive { get; set; }
+        public string Created_By { get; set; }
         public int UserDetailId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string PermanentAddress { get; set; }
         public string AlternateAddress { get; set; }
         public string MobileNumber { get; set; }
+        public string City { get; set; }
         public string RoleName { get; set; }
     }
 }

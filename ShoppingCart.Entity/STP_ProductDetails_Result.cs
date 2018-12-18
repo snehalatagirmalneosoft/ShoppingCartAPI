@@ -15,10 +15,12 @@ namespace ShoppingCart.Entity
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
+        public string Created_By { get; set; }
         public decimal Price { get; set; }
         public string ProductDescription { get; set; }
         public Nullable<bool> isActive { get; set; }
-        public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> Quantity { get; set; }
+        public string SubCategoryName { get; set; }
         public string CategoryName { get; set; }
     }
 }

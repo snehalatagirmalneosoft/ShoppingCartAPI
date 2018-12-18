@@ -14,10 +14,13 @@ namespace ShoppingCart.Entity
     public partial class STP_Search_Result
     {
         public Nullable<int> ProductId { get; set; }
-        public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> SubCategoryId { get; set; }
         public string Product_Name { get; set; }
         public Nullable<decimal> Price { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public Nullable<bool> Current_Status { get; set; }
+        public string Created_By { get; set; }
+        public string SubCategoryName { get; set; }
         public string CategoryName { get; set; }
     }
 }

@@ -19,5 +19,6 @@ namespace ShoppingCart.Entity
         public Nullable<int> Quantity { get; set; }
         public Nullable<int> SubCategoryId { get; set; }
         public Nullable<bool> Current_Status { get; set; }
+        public string Created_By { get; set; }
     }
 }

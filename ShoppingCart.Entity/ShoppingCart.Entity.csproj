@@ -72,7 +72,7 @@
     <Compile Include="GetCountryNames_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Image.cs">
+    <Compile Include="Images.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderDetail.cs">
@@ -85,9 +85,6 @@
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResetPasswordRequest.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="ShoppingCartModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -104,15 +101,6 @@
       <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="State.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STP_GetActiveCities_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STP_GetActiveCountries_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STP_GetActiveStates_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="STP_GetAllCities_Result.cs">
@@ -142,9 +130,6 @@
     <Compile Include="STP_GetCityDetails_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="STP_GetCountryDetails_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="STP_GetExceptionDetails_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
@@ -152,9 +137,6 @@
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="STP_GetProductsBySubCategory_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STP_GetResetRequestDetails_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="STP_GetRoleList_Result.cs">
@@ -184,9 +166,6 @@
     <Compile Include="STP_RandomProducts_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="STP_ResetPassword_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="STP_SearchActiveProducts_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
@@ -202,15 +181,6 @@
     <Compile Include="STP_ShowCategoryList_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="STP_ShowOrderDetails_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STP_ShowOrderProducts_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="STP_ShowOrders_Result.cs">
-      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="STP_ShowProductImages_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
@@ -218,6 +188,9 @@
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="STP_ShowSubCategoryList_Result.cs">
+      <DependentUpon>ShoppingCartModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="STP_ShowTemporaryImages_Result.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SubCategory.cs">
@@ -235,9 +208,12 @@
     <Compile Include="UserRole.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ViewProductDetail.cs">
+    <Compile Include="ViewProductDetails.cs">
       <DependentUpon>ShoppingCartModel.tt</DependentUpon>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="ShoppingCartModel.edmx">
@@ -255,17 +231,14 @@
   <ItemGroup>
     <Content Include="ShoppingCartModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
       <LastGenOutput>ShoppingCartModel.Context.cs</LastGenOutput>
+      <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
     </Content>
     <Content Include="ShoppingCartModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ShoppingCartModel.edmx</DependentUpon>
       <LastGenOutput>ShoppingCartModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -17,6 +17,7 @@ namespace ShoppingCart.Entity
         public Nullable<int> RoleId { get; set; }
         public string EmailId { get; set; }
         public bool IsActive { get; set; }
+        public string Created_By { get; set; }
         public int UserDetailId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

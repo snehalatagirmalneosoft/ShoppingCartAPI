@@ -17,7 +17,8 @@ namespace ShoppingCart.Entity
         public string Product_Name { get; set; }
         public decimal Price { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<int> CategoryId { get; set; }
+        public Nullable<int> SubCategoryId { get; set; }
         public Nullable<bool> Current_Status { get; set; }
+        public string Created_By { get; set; }
     }
 }

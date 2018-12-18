@@ -16,5 +16,6 @@ namespace ShoppingCart.Entity
         public int CategoryId { get; set; }
         public string Category_Name { get; set; }
         public bool Current_Status { get; set; }
+        public string Created_By { get; set; }
     }
 }

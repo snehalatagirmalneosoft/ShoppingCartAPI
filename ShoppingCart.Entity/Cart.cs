@@ -21,26 +21,6 @@ namespace ShoppingCart.Entity
         public Nullable<decimal> Price { get; set; }
     
         public virtual Product Product { get; set; }
-        public virtual Product Product1 { get; set; }
-        public virtual Product Product2 { get; set; }
-        public virtual Product Product3 { get; set; }
-        public virtual Product Product4 { get; set; }
-        public virtual Product Product5 { get; set; }
-        public virtual Product Product6 { get; set; }
-        public virtual Product Product7 { get; set; }
-        public virtual Product Product8 { get; set; }
-        public virtual Product Product9 { get; set; }
-        public virtual Product Product10 { get; set; }
         public virtual UserMaster UserMaster { get; set; }
-        public virtual UserMaster UserMaster1 { get; set; }
-        public virtual UserMaster UserMaster2 { get; set; }
-        public virtual UserMaster UserMaster3 { get; set; }
-        public virtual UserMaster UserMaster4 { get; set; }
-        public virtual UserMaster UserMaster5 { get; set; }
-        public virtual UserMaster UserMaster6 { get; set; }
-        public virtual UserMaster UserMaster7 { get; set; }
-        public virtual UserMaster UserMaster8 { get; set; }
-        public virtual UserMaster UserMaster9 { get; set; }
-        public virtual UserMaster UserMaster10 { get; set; }
     }
 }

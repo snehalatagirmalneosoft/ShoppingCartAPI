@@ -17,29 +17,8 @@ namespace ShoppingCart.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserMaster()
         {
-            this.Carts = new HashSet<Cart>();
-            this.Carts1 = new HashSet<Cart>();
-            this.Carts2 = new HashSet<Cart>();
-            this.Carts3 = new HashSet<Cart>();
-            this.Carts4 = new HashSet<Cart>();
-            this.Carts5 = new HashSet<Cart>();
-            this.Carts6 = new HashSet<Cart>();
-            this.Carts7 = new HashSet<Cart>();
-            this.Carts8 = new HashSet<Cart>();
-            this.Carts9 = new HashSet<Cart>();
-            this.Carts10 = new HashSet<Cart>();
-            this.ResetPasswordRequests = new HashSet<ResetPasswordRequest>();
-            this.UserDetails = new HashSet<UserDetail>();
-            this.UserDetails1 = new HashSet<UserDetail>();
-            this.UserDetails2 = new HashSet<UserDetail>();
-            this.UserDetails3 = new HashSet<UserDetail>();
-            this.UserDetails4 = new HashSet<UserDetail>();
-            this.UserDetails5 = new HashSet<UserDetail>();
-            this.UserDetails6 = new HashSet<UserDetail>();
-            this.UserDetails7 = new HashSet<UserDetail>();
-            this.UserDetails8 = new HashSet<UserDetail>();
-            this.UserDetails9 = new HashSet<UserDetail>();
-            this.UserDetails10 = new HashSet<UserDetail>();
+            this.Cart = new HashSet<Cart>();
+            this.UserDetail = new HashSet<UserDetail>();
         }
     
         public int UserId { get; set; }
@@ -47,66 +26,15 @@ namespace ShoppingCart.Entity
         public string EmailId { get; set; }
         public string UserPassWord { get; set; }
         public System.DateTime CreatedOn { get; set; }
+        public Nullable<int> CreatedBy { get; set; }
         public Nullable<System.DateTime> ModifiedOn { get; set; }
+        public Nullable<int> ModifiedBy { get; set; }
         public bool IsActive { get; set; }
-        public Nullable<System.DateTime> DeletedOn { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts { get; set; }
+        public virtual ICollection<Cart> Cart { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts4 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts5 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts6 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts7 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts8 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts9 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Carts10 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ResetPasswordRequest> ResetPasswordRequests { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails4 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails5 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails6 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails7 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails8 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails9 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserDetail> UserDetails10 { get; set; }
+        public virtual ICollection<UserDetail> UserDetail { get; set; }
         public virtual UserRole UserRole { get; set; }
-        public virtual UserRole UserRole1 { get; set; }
-        public virtual UserRole UserRole2 { get; set; }
-        public virtual UserRole UserRole3 { get; set; }
-        public virtual UserRole UserRole4 { get; set; }
-        public virtual UserRole UserRole5 { get; set; }
-        public virtual UserRole UserRole6 { get; set; }
-        public virtual UserRole UserRole7 { get; set; }
-        public virtual UserRole UserRole8 { get; set; }
-        public virtual UserRole UserRole9 { get; set; }
-        public virtual UserRole UserRole10 { get; set; }
     }
 }

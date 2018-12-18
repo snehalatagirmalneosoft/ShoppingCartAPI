@@ -22,6 +22,7 @@ namespace ShoppingCartAPI.Controllers
         /// </summary>       
         /// <returns>HttpResponseMessage</returns>
         /// Get: UserAPI/GetUserList
+        [Authorize]
         [HttpPost]
         [Route("GetUserList")]
         public HttpResponseMessage GetUserList()

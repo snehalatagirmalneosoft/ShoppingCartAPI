@@ -29,7 +29,7 @@ namespace ShoppingCart.DataAccess
             {
                 using (ShoppingCartEntities db = new ShoppingCartEntities())
                 {
-                    List<Category> BusinessCategory = db.Categories.ToList();
+                    List<Category> BusinessCategory = db.Category.ToList();
                     return BusinessCategory;
                 }
             }
@@ -51,7 +51,7 @@ namespace ShoppingCart.DataAccess
             {
                 using (ShoppingCartEntities db = new ShoppingCartEntities())
                 {
-                    Category result = db.Categories.FirstOrDefault(em => em.CategoryId == categoryModel.CategoryId);
+                    Category result = db.Category.FirstOrDefault(em => em.CategoryId == categoryModel.CategoryId);
                     if (result != null)
                     {
                        return result;
@@ -78,7 +78,7 @@ namespace ShoppingCart.DataAccess
             {
                 using (ShoppingCartEntities db = new ShoppingCartEntities())
                 {
-                    Category newCategory = db.Categories.Add(categoryModel);
+                    Category newCategory = db.Category.Add(categoryModel);
                     db.SaveChanges();
                     return newCategory;
                 }
@@ -101,7 +101,7 @@ namespace ShoppingCart.DataAccess
             {                
                 using (ShoppingCartEntities db = new ShoppingCartEntities())
                 {
-                    var categoryToUpdate = db.Categories.FirstOrDefault(em => em.CategoryId == categoryModel.CategoryId);
+                    var categoryToUpdate = db.Category.FirstOrDefault(em => em.CategoryId == categoryModel.CategoryId);
                     if (categoryToUpdate != null)
                     {
                         db.Entry(categoryToUpdate).CurrentValues.SetValues(categoryModel);
@@ -131,10 +131,10 @@ namespace ShoppingCart.DataAccess
             {
                 using (ShoppingCartEntities db = new ShoppingCartEntities())
                 {
-                    var categoryToDelete = db.Categories.FirstOrDefault(em => em.CategoryId == categoryModel.CategoryId);
+                    var categoryToDelete = db.Category.FirstOrDefault(em => em.CategoryId == categoryModel.CategoryId);
                     if (categoryToDelete != null)
                     {
-                        db.Categories.Remove(categoryToDelete);
+                        db.Category.Remove(categoryToDelete);
                         return db.SaveChanges();
                     }
                     else

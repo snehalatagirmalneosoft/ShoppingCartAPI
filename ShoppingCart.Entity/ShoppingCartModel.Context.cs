@@ -27,23 +27,22 @@ namespace ShoppingCart.Entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cart> Carts { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<City> Cities { get; set; }
-        public virtual DbSet<Country> Countries { get; set; }
-        public virtual DbSet<Exception> Exceptions { get; set; }
-        public virtual DbSet<Image> Images { get; set; }
-        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
-        public virtual DbSet<OrderMaster> OrderMasters { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ResetPasswordRequest> ResetPasswordRequests { get; set; }
-        public virtual DbSet<State> States { get; set; }
-        public virtual DbSet<SubCategory> SubCategories { get; set; }
-        public virtual DbSet<Temp> Temps { get; set; }
-        public virtual DbSet<UserDetail> UserDetails { get; set; }
-        public virtual DbSet<UserMaster> UserMasters { get; set; }
-        public virtual DbSet<UserRole> UserRoles { get; set; }
-        public virtual DbSet<ViewProductDetail> ViewProductDetails { get; set; }
+        public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<City> City { get; set; }
+        public virtual DbSet<Country> Country { get; set; }
+        public virtual DbSet<Exception> Exception { get; set; }
+        public virtual DbSet<Images> Images { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetail { get; set; }
+        public virtual DbSet<OrderMaster> OrderMaster { get; set; }
+        public virtual DbSet<Product> Product { get; set; }
+        public virtual DbSet<State> State { get; set; }
+        public virtual DbSet<SubCategory> SubCategory { get; set; }
+        public virtual DbSet<Temp> Temp { get; set; }
+        public virtual DbSet<UserDetail> UserDetail { get; set; }
+        public virtual DbSet<UserMaster> UserMaster { get; set; }
+        public virtual DbSet<UserRole> UserRole { get; set; }
+        public virtual DbSet<ViewProductDetails> ViewProductDetails { get; set; }
     
         public virtual ObjectResult<GetCartProducts_Result> GetCartProducts(Nullable<int> userId)
         {
@@ -59,11 +58,11 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetCountryNames_Result>("GetCountryNames");
         }
     
-        public virtual int STP_AddNewProduct(Nullable<int> categoryId, string productName, Nullable<System.DateTime> createdOn, Nullable<decimal> price, string productDescription, Nullable<bool> isActive)
+        public virtual int STP_AddNewProduct(Nullable<int> subCategoryId, string productName, Nullable<System.DateTime> createdOn, Nullable<int> createdBy, Nullable<decimal> price, string productDescription, Nullable<bool> isActive, Nullable<int> quantity)
         {
-            var categoryIdParameter = categoryId.HasValue ?
-                new ObjectParameter("categoryId", categoryId) :
-                new ObjectParameter("categoryId", typeof(int));
+            var subCategoryIdParameter = subCategoryId.HasValue ?
+                new ObjectParameter("subCategoryId", subCategoryId) :
+                new ObjectParameter("subCategoryId", typeof(int));
     
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
@@ -72,6 +71,10 @@ namespace ShoppingCart.Entity
             var createdOnParameter = createdOn.HasValue ?
                 new ObjectParameter("createdOn", createdOn) :
                 new ObjectParameter("createdOn", typeof(System.DateTime));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("createdBy", createdBy) :
+                new ObjectParameter("createdBy", typeof(int));
     
             var priceParameter = price.HasValue ?
                 new ObjectParameter("price", price) :
@@ -85,7 +88,11 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_AddNewProduct", categoryIdParameter, productNameParameter, createdOnParameter, priceParameter, productDescriptionParameter, isActiveParameter);
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_AddNewProduct", subCategoryIdParameter, productNameParameter, createdOnParameter, createdByParameter, priceParameter, productDescriptionParameter, isActiveParameter, quantityParameter);
         }
     
         public virtual int STP_AddOrder(Nullable<int> userId, Nullable<decimal> grossAmount, string receiverMobileNumber, string billingMode, string shippingAddress, Nullable<System.DateTime> orderDate, string orderStatus, string receiverEmailId, string receiverFirstName, string receiverLastName)
@@ -154,52 +161,31 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_AddProductsToCart", productIdParameter, userIdParameter, quantityParameter, priceParameter);
         }
     
-        public virtual int STP_DeleteCartProducts(Nullable<int> userId)
-        {
-            var userIdParameter = userId.HasValue ?
-                new ObjectParameter("userId", userId) :
-                new ObjectParameter("userId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCartProducts", userIdParameter);
-        }
-    
-        public virtual int STP_DeleteCategory(Nullable<int> categoryId, Nullable<System.DateTime> deletedOn)
+        public virtual int STP_DeleteCategory(Nullable<int> categoryId)
         {
             var categoryIdParameter = categoryId.HasValue ?
                 new ObjectParameter("categoryId", categoryId) :
                 new ObjectParameter("categoryId", typeof(int));
     
-            var deletedOnParameter = deletedOn.HasValue ?
-                new ObjectParameter("deletedOn", deletedOn) :
-                new ObjectParameter("deletedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCategory", categoryIdParameter, deletedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCategory", categoryIdParameter);
         }
     
-        public virtual int STP_DeleteCity(Nullable<int> id, Nullable<System.DateTime> deletedOn)
+        public virtual int STP_DeleteCity(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            var deletedOnParameter = deletedOn.HasValue ?
-                new ObjectParameter("deletedOn", deletedOn) :
-                new ObjectParameter("deletedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCity", idParameter, deletedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCity", idParameter);
         }
     
-        public virtual int STP_DeleteCountry(Nullable<int> id, Nullable<System.DateTime> deletedOn)
+        public virtual int STP_DeleteCountry(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            var deletedOnParameter = deletedOn.HasValue ?
-                new ObjectParameter("deletedOn", deletedOn) :
-                new ObjectParameter("deletedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCountry", idParameter, deletedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteCountry", idParameter);
         }
     
         public virtual int STP_DeleteException(Nullable<int> exceptionId)
@@ -211,26 +197,13 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteException", exceptionIdParameter);
         }
     
-        public virtual int STP_DeleteProduct(Nullable<int> productId, Nullable<System.DateTime> deletedOn)
+        public virtual int STP_DeleteProduct(Nullable<int> productId)
         {
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
                 new ObjectParameter("productId", typeof(int));
     
-            var deletedOnParameter = deletedOn.HasValue ?
-                new ObjectParameter("deletedOn", deletedOn) :
-                new ObjectParameter("deletedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteProduct", productIdParameter, deletedOnParameter);
-        }
-    
-        public virtual int STP_DeleteProductFromCart(Nullable<int> productId)
-        {
-            var productIdParameter = productId.HasValue ?
-                new ObjectParameter("productId", productId) :
-                new ObjectParameter("productId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteProductFromCart", productIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteProduct", productIdParameter);
         }
     
         public virtual int STP_DeleteProductImage(Nullable<int> imageId)
@@ -242,17 +215,13 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteProductImage", imageIdParameter);
         }
     
-        public virtual int STP_DeleteState(Nullable<int> id, Nullable<System.DateTime> deletedOn)
+        public virtual int STP_DeleteState(Nullable<int> id)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
                 new ObjectParameter("id", typeof(int));
     
-            var deletedOnParameter = deletedOn.HasValue ?
-                new ObjectParameter("deletedOn", deletedOn) :
-                new ObjectParameter("deletedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteState", idParameter, deletedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteState", idParameter);
         }
     
         public virtual int STP_DeleteSubCategory(Nullable<int> subCategoryId)
@@ -264,40 +233,22 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteSubCategory", subCategoryIdParameter);
         }
     
-        public virtual int STP_DeleteUser(Nullable<int> userId, Nullable<System.DateTime> deletedOn)
+        public virtual int STP_DeleteTemporaryImage(Nullable<int> tempId)
+        {
+            var tempIdParameter = tempId.HasValue ?
+                new ObjectParameter("tempId", tempId) :
+                new ObjectParameter("tempId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteTemporaryImage", tempIdParameter);
+        }
+    
+        public virtual int STP_DeleteUser(Nullable<int> userId)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
-            var deletedOnParameter = deletedOn.HasValue ?
-                new ObjectParameter("deletedOn", deletedOn) :
-                new ObjectParameter("deletedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteUser", userIdParameter, deletedOnParameter);
-        }
-    
-        public virtual ObjectResult<STP_GetActiveCities_Result> STP_GetActiveCities(Nullable<int> stateId)
-        {
-            var stateIdParameter = stateId.HasValue ?
-                new ObjectParameter("stateId", stateId) :
-                new ObjectParameter("stateId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetActiveCities_Result>("STP_GetActiveCities", stateIdParameter);
-        }
-    
-        public virtual ObjectResult<STP_GetActiveCountries_Result> STP_GetActiveCountries()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetActiveCountries_Result>("STP_GetActiveCountries");
-        }
-    
-        public virtual ObjectResult<STP_GetActiveStates_Result> STP_GetActiveStates(Nullable<int> countryId)
-        {
-            var countryIdParameter = countryId.HasValue ?
-                new ObjectParameter("countryId", countryId) :
-                new ObjectParameter("countryId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetActiveStates_Result>("STP_GetActiveStates", countryIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_DeleteUser", userIdParameter);
         }
     
         public virtual ObjectResult<STP_GetAllCities_Result> STP_GetAllCities()
@@ -378,13 +329,13 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetCityDetails_Result>("STP_GetCityDetails", cityIdParameter);
         }
     
-        public virtual ObjectResult<STP_GetCountryDetails_Result> STP_GetCountryDetails(Nullable<int> countryId)
+        public virtual ObjectResult<string> STP_GetCountryDetails(Nullable<int> countryId)
         {
             var countryIdParameter = countryId.HasValue ?
                 new ObjectParameter("countryId", countryId) :
                 new ObjectParameter("countryId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetCountryDetails_Result>("STP_GetCountryDetails", countryIdParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("STP_GetCountryDetails", countryIdParameter);
         }
     
         public virtual ObjectResult<Nullable<int>> STP_GetCountryId(Nullable<int> stateId)
@@ -447,15 +398,6 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("subCategoryId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetProductsBySubCategory_Result>("STP_GetProductsBySubCategory", subCategoryIdParameter);
-        }
-    
-        public virtual ObjectResult<STP_GetResetRequestDetails_Result> STP_GetResetRequestDetails(Nullable<System.Guid> id)
-        {
-            var idParameter = id.HasValue ?
-                new ObjectParameter("id", id) :
-                new ObjectParameter("id", typeof(System.Guid));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetResetRequestDetails_Result>("STP_GetResetRequestDetails", idParameter);
         }
     
         public virtual ObjectResult<STP_GetRoleList_Result> STP_GetRoleList()
@@ -522,7 +464,7 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_GetUsers_Result>("STP_GetUsers");
         }
     
-        public virtual int STP_InsertCategories(string categoryName, Nullable<System.DateTime> createdOn, Nullable<bool> isActive)
+        public virtual int STP_InsertCategories(string categoryName, Nullable<System.DateTime> createdOn, Nullable<int> createdBy, Nullable<System.DateTime> modifiedOn, Nullable<int> modifiedBy, Nullable<bool> isActive)
         {
             var categoryNameParameter = categoryName != null ?
                 new ObjectParameter("categoryName", categoryName) :
@@ -532,14 +474,26 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("createdOn", createdOn) :
                 new ObjectParameter("createdOn", typeof(System.DateTime));
     
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("createdBy", createdBy) :
+                new ObjectParameter("createdBy", typeof(int));
+    
+            var modifiedOnParameter = modifiedOn.HasValue ?
+                new ObjectParameter("modifiedOn", modifiedOn) :
+                new ObjectParameter("modifiedOn", typeof(System.DateTime));
+    
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("modifiedBy", modifiedBy) :
+                new ObjectParameter("modifiedBy", typeof(int));
+    
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertCategories", categoryNameParameter, createdOnParameter, isActiveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertCategories", categoryNameParameter, createdOnParameter, createdByParameter, modifiedOnParameter, modifiedByParameter, isActiveParameter);
         }
     
-        public virtual int STP_InsertCity(Nullable<int> stateId, string cityName, Nullable<System.DateTime> createdOn)
+        public virtual int STP_InsertCity(Nullable<int> stateId, string cityName)
         {
             var stateIdParameter = stateId.HasValue ?
                 new ObjectParameter("stateId", stateId) :
@@ -549,31 +503,32 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("cityName", cityName) :
                 new ObjectParameter("cityName", typeof(string));
     
-            var createdOnParameter = createdOn.HasValue ?
-                new ObjectParameter("createdOn", createdOn) :
-                new ObjectParameter("createdOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertCity", stateIdParameter, cityNameParameter, createdOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertCity", stateIdParameter, cityNameParameter);
         }
     
-        public virtual int STP_InsertCountry(string countryName, Nullable<System.DateTime> createdOn)
+        public virtual int STP_InsertCountry(string countryName)
         {
             var countryNameParameter = countryName != null ?
                 new ObjectParameter("countryName", countryName) :
                 new ObjectParameter("countryName", typeof(string));
     
-            var createdOnParameter = createdOn.HasValue ?
-                new ObjectParameter("createdOn", createdOn) :
-                new ObjectParameter("createdOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertCountry", countryNameParameter, createdOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertCountry", countryNameParameter);
         }
     
-        public virtual int STP_InsertProduct(Nullable<int> categoryId, string productName, Nullable<System.DateTime> createdOn, Nullable<decimal> price, string productDescription, Nullable<bool> isActive, Nullable<int> quantity)
+        public virtual int STP_InsertImagesIntoTemp(string imageUrl)
         {
-            var categoryIdParameter = categoryId.HasValue ?
-                new ObjectParameter("categoryId", categoryId) :
-                new ObjectParameter("categoryId", typeof(int));
+            var imageUrlParameter = imageUrl != null ?
+                new ObjectParameter("imageUrl", imageUrl) :
+                new ObjectParameter("imageUrl", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertImagesIntoTemp", imageUrlParameter);
+        }
+    
+        public virtual int STP_InsertProduct(Nullable<int> subCategoryId, string productName, Nullable<System.DateTime> createdOn, Nullable<int> createdBy, Nullable<decimal> price, string productDescription, Nullable<bool> isActive, Nullable<int> quantity)
+        {
+            var subCategoryIdParameter = subCategoryId.HasValue ?
+                new ObjectParameter("subCategoryId", subCategoryId) :
+                new ObjectParameter("subCategoryId", typeof(int));
     
             var productNameParameter = productName != null ?
                 new ObjectParameter("productName", productName) :
@@ -582,6 +537,10 @@ namespace ShoppingCart.Entity
             var createdOnParameter = createdOn.HasValue ?
                 new ObjectParameter("createdOn", createdOn) :
                 new ObjectParameter("createdOn", typeof(System.DateTime));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("createdBy", createdBy) :
+                new ObjectParameter("createdBy", typeof(int));
     
             var priceParameter = price.HasValue ?
                 new ObjectParameter("price", price) :
@@ -599,10 +558,10 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("quantity", quantity) :
                 new ObjectParameter("quantity", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertProduct", categoryIdParameter, productNameParameter, createdOnParameter, priceParameter, productDescriptionParameter, isActiveParameter, quantityParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertProduct", subCategoryIdParameter, productNameParameter, createdOnParameter, createdByParameter, priceParameter, productDescriptionParameter, isActiveParameter, quantityParameter);
         }
     
-        public virtual int STP_InsertState(Nullable<int> countryId, string stateName, Nullable<System.DateTime> createdOn)
+        public virtual int STP_InsertState(Nullable<int> countryId, string stateName)
         {
             var countryIdParameter = countryId.HasValue ?
                 new ObjectParameter("countryId", countryId) :
@@ -612,14 +571,10 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("stateName", stateName) :
                 new ObjectParameter("stateName", typeof(string));
     
-            var createdOnParameter = createdOn.HasValue ?
-                new ObjectParameter("createdOn", createdOn) :
-                new ObjectParameter("createdOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertState", countryIdParameter, stateNameParameter, createdOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertState", countryIdParameter, stateNameParameter);
         }
     
-        public virtual int STP_InsertSubCategories(Nullable<int> categoryId, string subCategoryName, Nullable<System.DateTime> createdOn, Nullable<System.DateTime> modifiedOn, Nullable<bool> isActive)
+        public virtual int STP_InsertSubCategories(Nullable<int> categoryId, string subCategoryName, Nullable<System.DateTime> createdOn, Nullable<int> createdBy, Nullable<System.DateTime> modifiedOn, Nullable<int> modifiedBy, Nullable<bool> isActive)
         {
             var categoryIdParameter = categoryId.HasValue ?
                 new ObjectParameter("categoryId", categoryId) :
@@ -633,18 +588,26 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("createdOn", createdOn) :
                 new ObjectParameter("createdOn", typeof(System.DateTime));
     
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("createdBy", createdBy) :
+                new ObjectParameter("createdBy", typeof(int));
+    
             var modifiedOnParameter = modifiedOn.HasValue ?
                 new ObjectParameter("modifiedOn", modifiedOn) :
                 new ObjectParameter("modifiedOn", typeof(System.DateTime));
+    
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("modifiedBy", modifiedBy) :
+                new ObjectParameter("modifiedBy", typeof(int));
     
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertSubCategories", categoryIdParameter, subCategoryNameParameter, createdOnParameter, modifiedOnParameter, isActiveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertSubCategories", categoryIdParameter, subCategoryNameParameter, createdOnParameter, createdByParameter, modifiedOnParameter, modifiedByParameter, isActiveParameter);
         }
     
-        public virtual int STP_InsertUser(Nullable<int> roleId, string emailId, string userPassWord, Nullable<System.DateTime> createdOn, Nullable<bool> isActive, string firstName, string lastName, string permanentAddress, string alternateAddress, string mobileNumber)
+        public virtual int STP_InsertUser(Nullable<int> roleId, string emailId, string userPassWord, Nullable<System.DateTime> createdOn, Nullable<int> createdBy, Nullable<bool> isActive, string firstName, string lastName, string permanentAddress, string alternateAddress, string mobileNumber, string city)
         {
             var roleIdParameter = roleId.HasValue ?
                 new ObjectParameter("roleId", roleId) :
@@ -661,6 +624,10 @@ namespace ShoppingCart.Entity
             var createdOnParameter = createdOn.HasValue ?
                 new ObjectParameter("createdOn", createdOn) :
                 new ObjectParameter("createdOn", typeof(System.DateTime));
+    
+            var createdByParameter = createdBy.HasValue ?
+                new ObjectParameter("createdBy", createdBy) :
+                new ObjectParameter("createdBy", typeof(int));
     
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
@@ -686,7 +653,11 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("mobileNumber", mobileNumber) :
                 new ObjectParameter("mobileNumber", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertUser", roleIdParameter, emailIdParameter, userPassWordParameter, createdOnParameter, isActiveParameter, firstNameParameter, lastNameParameter, permanentAddressParameter, alternateAddressParameter, mobileNumberParameter);
+            var cityParameter = city != null ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_InsertUser", roleIdParameter, emailIdParameter, userPassWordParameter, createdOnParameter, createdByParameter, isActiveParameter, firstNameParameter, lastNameParameter, permanentAddressParameter, alternateAddressParameter, mobileNumberParameter, cityParameter);
         }
     
         public virtual ObjectResult<STP_LoginUser_Result> STP_LoginUser(string emailId, string password)
@@ -716,7 +687,7 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_RandomProducts_Result>("STP_RandomProducts");
         }
     
-        public virtual int STP_RegisterCustomer(Nullable<int> roleId, string emailId, string userPassWord, Nullable<System.DateTime> createdOn, Nullable<bool> isActive, string firstName, string lastName, string permanentAddress, string alternateAddress, string mobileNumber)
+        public virtual int STP_RegisterCustomer(Nullable<int> roleId, string emailId, string userPassWord, Nullable<System.DateTime> createdOn, Nullable<bool> isActive, string firstName, string lastName, string permanentAddress, string alternateAddress, string mobileNumber, string city)
         {
             var roleIdParameter = roleId.HasValue ?
                 new ObjectParameter("roleId", roleId) :
@@ -758,7 +729,11 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("mobileNumber", mobileNumber) :
                 new ObjectParameter("mobileNumber", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_RegisterCustomer", roleIdParameter, emailIdParameter, userPassWordParameter, createdOnParameter, isActiveParameter, firstNameParameter, lastNameParameter, permanentAddressParameter, alternateAddressParameter, mobileNumberParameter);
+            var cityParameter = city != null ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_RegisterCustomer", roleIdParameter, emailIdParameter, userPassWordParameter, createdOnParameter, isActiveParameter, firstNameParameter, lastNameParameter, permanentAddressParameter, alternateAddressParameter, mobileNumberParameter, cityParameter);
         }
     
         public virtual int STP_RemoveProductFromCart(Nullable<int> productId, Nullable<int> userId)
@@ -772,15 +747,6 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("userId", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_RemoveProductFromCart", productIdParameter, userIdParameter);
-        }
-    
-        public virtual ObjectResult<STP_ResetPassword_Result> STP_ResetPassword(string emailId)
-        {
-            var emailIdParameter = emailId != null ?
-                new ObjectParameter("EmailId", emailId) :
-                new ObjectParameter("EmailId", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ResetPassword_Result>("STP_ResetPassword", emailIdParameter);
         }
     
         public virtual ObjectResult<STP_Search_Result> STP_Search(string value)
@@ -820,29 +786,6 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ShowCategoryList_Result>("STP_ShowCategoryList");
         }
     
-        public virtual ObjectResult<STP_ShowOrderDetails_Result> STP_ShowOrderDetails(Nullable<int> orderId)
-        {
-            var orderIdParameter = orderId.HasValue ?
-                new ObjectParameter("orderId", orderId) :
-                new ObjectParameter("orderId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ShowOrderDetails_Result>("STP_ShowOrderDetails", orderIdParameter);
-        }
-    
-        public virtual ObjectResult<STP_ShowOrderProducts_Result> STP_ShowOrderProducts(Nullable<int> orderId)
-        {
-            var orderIdParameter = orderId.HasValue ?
-                new ObjectParameter("orderId", orderId) :
-                new ObjectParameter("orderId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ShowOrderProducts_Result>("STP_ShowOrderProducts", orderIdParameter);
-        }
-    
-        public virtual ObjectResult<STP_ShowOrders_Result> STP_ShowOrders()
-        {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ShowOrders_Result>("STP_ShowOrders");
-        }
-    
         public virtual ObjectResult<STP_ShowProductImages_Result> STP_ShowProductImages(Nullable<int> productId)
         {
             var productIdParameter = productId.HasValue ?
@@ -870,6 +813,11 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ShowSubCategoryList_Result>("STP_ShowSubCategoryList", categoryIdParameter);
         }
     
+        public virtual ObjectResult<STP_ShowTemporaryImages_Result> STP_ShowTemporaryImages()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<STP_ShowTemporaryImages_Result>("STP_ShowTemporaryImages");
+        }
+    
         public virtual int STP_UpdateCart(Nullable<int> productId, Nullable<int> quantity, Nullable<decimal> price, Nullable<int> userId)
         {
             var productIdParameter = productId.HasValue ?
@@ -891,7 +839,7 @@ namespace ShoppingCart.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCart", productIdParameter, quantityParameter, priceParameter, userIdParameter);
         }
     
-        public virtual int STP_UpdateCategories(Nullable<int> categoryId, string categoryName, Nullable<System.DateTime> modifiedOn, Nullable<bool> isActive)
+        public virtual int STP_UpdateCategories(Nullable<int> categoryId, string categoryName, Nullable<System.DateTime> modifiedOn, Nullable<int> modifiedBy, Nullable<bool> isActive)
         {
             var categoryIdParameter = categoryId.HasValue ?
                 new ObjectParameter("categoryId", categoryId) :
@@ -905,14 +853,18 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("modifiedOn", modifiedOn) :
                 new ObjectParameter("modifiedOn", typeof(System.DateTime));
     
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("modifiedBy", modifiedBy) :
+                new ObjectParameter("modifiedBy", typeof(int));
+    
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCategories", categoryIdParameter, categoryNameParameter, modifiedOnParameter, isActiveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCategories", categoryIdParameter, categoryNameParameter, modifiedOnParameter, modifiedByParameter, isActiveParameter);
         }
     
-        public virtual int STP_UpdateCity(Nullable<int> cityId, Nullable<int> stateId, string newName, Nullable<bool> isActive, Nullable<System.DateTime> modifiedOn)
+        public virtual int STP_UpdateCity(Nullable<int> cityId, Nullable<int> stateId, string newName)
         {
             var cityIdParameter = cityId.HasValue ?
                 new ObjectParameter("cityId", cityId) :
@@ -926,18 +878,10 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("newName", newName) :
                 new ObjectParameter("newName", typeof(string));
     
-            var isActiveParameter = isActive.HasValue ?
-                new ObjectParameter("isActive", isActive) :
-                new ObjectParameter("isActive", typeof(bool));
-    
-            var modifiedOnParameter = modifiedOn.HasValue ?
-                new ObjectParameter("modifiedOn", modifiedOn) :
-                new ObjectParameter("modifiedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCity", cityIdParameter, stateIdParameter, newNameParameter, isActiveParameter, modifiedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCity", cityIdParameter, stateIdParameter, newNameParameter);
         }
     
-        public virtual int STP_UpdateCountry(Nullable<int> id, string newName, Nullable<bool> isActive, Nullable<System.DateTime> modifiedOn)
+        public virtual int STP_UpdateCountry(Nullable<int> id, string newName)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -947,64 +891,10 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("newName", newName) :
                 new ObjectParameter("newName", typeof(string));
     
-            var isActiveParameter = isActive.HasValue ?
-                new ObjectParameter("isActive", isActive) :
-                new ObjectParameter("isActive", typeof(bool));
-    
-            var modifiedOnParameter = modifiedOn.HasValue ?
-                new ObjectParameter("modifiedOn", modifiedOn) :
-                new ObjectParameter("modifiedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCountry", idParameter, newNameParameter, isActiveParameter, modifiedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateCountry", idParameter, newNameParameter);
         }
     
-        public virtual int STP_UpdateNewPassword(string emailId, string password)
-        {
-            var emailIdParameter = emailId != null ?
-                new ObjectParameter("emailId", emailId) :
-                new ObjectParameter("emailId", typeof(string));
-    
-            var passwordParameter = password != null ?
-                new ObjectParameter("password", password) :
-                new ObjectParameter("password", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateNewPassword", emailIdParameter, passwordParameter);
-        }
-    
-        public virtual int STP_UpdateProduct(Nullable<int> productId, Nullable<int> categoryId, string productName, Nullable<System.DateTime> modifiedOn, Nullable<decimal> price, string productDescription, Nullable<bool> isActive)
-        {
-            var productIdParameter = productId.HasValue ?
-                new ObjectParameter("productId", productId) :
-                new ObjectParameter("productId", typeof(int));
-    
-            var categoryIdParameter = categoryId.HasValue ?
-                new ObjectParameter("categoryId", categoryId) :
-                new ObjectParameter("categoryId", typeof(int));
-    
-            var productNameParameter = productName != null ?
-                new ObjectParameter("productName", productName) :
-                new ObjectParameter("productName", typeof(string));
-    
-            var modifiedOnParameter = modifiedOn.HasValue ?
-                new ObjectParameter("modifiedOn", modifiedOn) :
-                new ObjectParameter("modifiedOn", typeof(System.DateTime));
-    
-            var priceParameter = price.HasValue ?
-                new ObjectParameter("price", price) :
-                new ObjectParameter("price", typeof(decimal));
-    
-            var productDescriptionParameter = productDescription != null ?
-                new ObjectParameter("productDescription", productDescription) :
-                new ObjectParameter("productDescription", typeof(string));
-    
-            var isActiveParameter = isActive.HasValue ?
-                new ObjectParameter("isActive", isActive) :
-                new ObjectParameter("isActive", typeof(bool));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateProduct", productIdParameter, categoryIdParameter, productNameParameter, modifiedOnParameter, priceParameter, productDescriptionParameter, isActiveParameter);
-        }
-    
-        public virtual int STP_UpdateProductDetails(Nullable<int> productId, Nullable<int> subCategoryId, string productName, Nullable<System.DateTime> modifiedOn, Nullable<decimal> price, string productDescription, Nullable<bool> isActive)
+        public virtual int STP_UpdateProduct(Nullable<int> productId, Nullable<int> subCategoryId, string productName, Nullable<System.DateTime> modifiedOn, Nullable<int> modifiedBy, Nullable<decimal> price, string productDescription, Nullable<bool> isActive, Nullable<int> quantity)
         {
             var productIdParameter = productId.HasValue ?
                 new ObjectParameter("productId", productId) :
@@ -1022,6 +912,10 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("modifiedOn", modifiedOn) :
                 new ObjectParameter("modifiedOn", typeof(System.DateTime));
     
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("modifiedBy", modifiedBy) :
+                new ObjectParameter("modifiedBy", typeof(int));
+    
             var priceParameter = price.HasValue ?
                 new ObjectParameter("price", price) :
                 new ObjectParameter("price", typeof(decimal));
@@ -1034,10 +928,55 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateProductDetails", productIdParameter, subCategoryIdParameter, productNameParameter, modifiedOnParameter, priceParameter, productDescriptionParameter, isActiveParameter);
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateProduct", productIdParameter, subCategoryIdParameter, productNameParameter, modifiedOnParameter, modifiedByParameter, priceParameter, productDescriptionParameter, isActiveParameter, quantityParameter);
         }
     
-        public virtual int STP_UpdateState(Nullable<int> id, string newName, Nullable<int> countryId, Nullable<bool> isActive, Nullable<System.DateTime> modifiedOn)
+        public virtual int STP_UpdateProductDetails(Nullable<int> productId, Nullable<int> subCategoryId, string productName, Nullable<System.DateTime> modifiedOn, Nullable<int> modifiedBy, Nullable<decimal> price, string productDescription, Nullable<bool> isActive, Nullable<int> quantity)
+        {
+            var productIdParameter = productId.HasValue ?
+                new ObjectParameter("productId", productId) :
+                new ObjectParameter("productId", typeof(int));
+    
+            var subCategoryIdParameter = subCategoryId.HasValue ?
+                new ObjectParameter("subCategoryId", subCategoryId) :
+                new ObjectParameter("subCategoryId", typeof(int));
+    
+            var productNameParameter = productName != null ?
+                new ObjectParameter("productName", productName) :
+                new ObjectParameter("productName", typeof(string));
+    
+            var modifiedOnParameter = modifiedOn.HasValue ?
+                new ObjectParameter("modifiedOn", modifiedOn) :
+                new ObjectParameter("modifiedOn", typeof(System.DateTime));
+    
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("modifiedBy", modifiedBy) :
+                new ObjectParameter("modifiedBy", typeof(int));
+    
+            var priceParameter = price.HasValue ?
+                new ObjectParameter("price", price) :
+                new ObjectParameter("price", typeof(decimal));
+    
+            var productDescriptionParameter = productDescription != null ?
+                new ObjectParameter("productDescription", productDescription) :
+                new ObjectParameter("productDescription", typeof(string));
+    
+            var isActiveParameter = isActive.HasValue ?
+                new ObjectParameter("isActive", isActive) :
+                new ObjectParameter("isActive", typeof(bool));
+    
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("quantity", quantity) :
+                new ObjectParameter("quantity", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateProductDetails", productIdParameter, subCategoryIdParameter, productNameParameter, modifiedOnParameter, modifiedByParameter, priceParameter, productDescriptionParameter, isActiveParameter, quantityParameter);
+        }
+    
+        public virtual int STP_UpdateState(Nullable<int> id, string newName, Nullable<int> countryId)
         {
             var idParameter = id.HasValue ?
                 new ObjectParameter("id", id) :
@@ -1051,18 +990,10 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("countryId", countryId) :
                 new ObjectParameter("countryId", typeof(int));
     
-            var isActiveParameter = isActive.HasValue ?
-                new ObjectParameter("isActive", isActive) :
-                new ObjectParameter("isActive", typeof(bool));
-    
-            var modifiedOnParameter = modifiedOn.HasValue ?
-                new ObjectParameter("modifiedOn", modifiedOn) :
-                new ObjectParameter("modifiedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateState", idParameter, newNameParameter, countryIdParameter, isActiveParameter, modifiedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateState", idParameter, newNameParameter, countryIdParameter);
         }
     
-        public virtual int STP_UpdateSubCategories(Nullable<int> subCategoryId, Nullable<int> categoryId, string subCategoryName, Nullable<System.DateTime> modifiedOn, Nullable<bool> isActive)
+        public virtual int STP_UpdateSubCategories(Nullable<int> subCategoryId, Nullable<int> categoryId, string subCategoryName, Nullable<System.DateTime> modifiedOn, Nullable<int> modifiedBy, Nullable<bool> isActive)
         {
             var subCategoryIdParameter = subCategoryId.HasValue ?
                 new ObjectParameter("subCategoryId", subCategoryId) :
@@ -1080,14 +1011,18 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("modifiedOn", modifiedOn) :
                 new ObjectParameter("modifiedOn", typeof(System.DateTime));
     
+            var modifiedByParameter = modifiedBy.HasValue ?
+                new ObjectParameter("modifiedBy", modifiedBy) :
+                new ObjectParameter("modifiedBy", typeof(int));
+    
             var isActiveParameter = isActive.HasValue ?
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateSubCategories", subCategoryIdParameter, categoryIdParameter, subCategoryNameParameter, modifiedOnParameter, isActiveParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateSubCategories", subCategoryIdParameter, categoryIdParameter, subCategoryNameParameter, modifiedOnParameter, modifiedByParameter, isActiveParameter);
         }
     
-        public virtual int STP_UpdateUser(Nullable<int> userId, Nullable<int> roleId, Nullable<bool> isActive, Nullable<System.DateTime> modifiedOn)
+        public virtual int STP_UpdateUser(Nullable<int> userId, Nullable<int> roleId, Nullable<bool> isActive)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
@@ -1101,22 +1036,22 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("isActive", isActive) :
                 new ObjectParameter("isActive", typeof(bool));
     
-            var modifiedOnParameter = modifiedOn.HasValue ?
-                new ObjectParameter("modifiedOn", modifiedOn) :
-                new ObjectParameter("modifiedOn", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateUser", userIdParameter, roleIdParameter, isActiveParameter, modifiedOnParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateUser", userIdParameter, roleIdParameter, isActiveParameter);
         }
     
-        public virtual int STP_UpdateUserProfile(Nullable<int> userId, Nullable<System.DateTime> modifiedOn, string firstName, string lastName, string permanentAddress, string alternateAddress, string mobileNumber)
+        public virtual int STP_UpdateUserProfile(Nullable<int> userId, string emailId, string userPassWord, string firstName, string lastName, string permanentAddress, string alternateAddress, string mobileNumber, string city)
         {
             var userIdParameter = userId.HasValue ?
                 new ObjectParameter("userId", userId) :
                 new ObjectParameter("userId", typeof(int));
     
-            var modifiedOnParameter = modifiedOn.HasValue ?
-                new ObjectParameter("modifiedOn", modifiedOn) :
-                new ObjectParameter("modifiedOn", typeof(System.DateTime));
+            var emailIdParameter = emailId != null ?
+                new ObjectParameter("emailId", emailId) :
+                new ObjectParameter("emailId", typeof(string));
+    
+            var userPassWordParameter = userPassWord != null ?
+                new ObjectParameter("userPassWord", userPassWord) :
+                new ObjectParameter("userPassWord", typeof(string));
     
             var firstNameParameter = firstName != null ?
                 new ObjectParameter("firstName", firstName) :
@@ -1138,7 +1073,11 @@ namespace ShoppingCart.Entity
                 new ObjectParameter("mobileNumber", mobileNumber) :
                 new ObjectParameter("mobileNumber", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateUserProfile", userIdParameter, modifiedOnParameter, firstNameParameter, lastNameParameter, permanentAddressParameter, alternateAddressParameter, mobileNumberParameter);
+            var cityParameter = city != null ?
+                new ObjectParameter("city", city) :
+                new ObjectParameter("city", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("STP_UpdateUserProfile", userIdParameter, emailIdParameter, userPassWordParameter, firstNameParameter, lastNameParameter, permanentAddressParameter, alternateAddressParameter, mobileNumberParameter, cityParameter);
         }
     }
 }

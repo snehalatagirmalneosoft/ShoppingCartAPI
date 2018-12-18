@@ -18,20 +18,11 @@ namespace ShoppingCart.Entity
         public Nullable<int> UserId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string PermanentAddress { get; set; }
         public string AlternateAddress { get; set; }
         public string MobileNumber { get; set; }
-        public string PermanentAddress { get; set; }
+        public string City { get; set; }
     
         public virtual UserMaster UserMaster { get; set; }
-        public virtual UserMaster UserMaster1 { get; set; }
-        public virtual UserMaster UserMaster2 { get; set; }
-        public virtual UserMaster UserMaster3 { get; set; }
-        public virtual UserMaster UserMaster4 { get; set; }
-        public virtual UserMaster UserMaster5 { get; set; }
-        public virtual UserMaster UserMaster6 { get; set; }
-        public virtual UserMaster UserMaster7 { get; set; }
-        public virtual UserMaster UserMaster8 { get; set; }
-        public virtual UserMaster UserMaster9 { get; set; }
-        public virtual UserMaster UserMaster10 { get; set; }
     }
 }

@@ -17,59 +17,15 @@ namespace ShoppingCart.Entity
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public State()
         {
-            this.Cities = new HashSet<City>();
-            this.Cities1 = new HashSet<City>();
-            this.Cities2 = new HashSet<City>();
-            this.Cities3 = new HashSet<City>();
-            this.Cities4 = new HashSet<City>();
-            this.Cities5 = new HashSet<City>();
-            this.Cities6 = new HashSet<City>();
-            this.Cities7 = new HashSet<City>();
-            this.Cities8 = new HashSet<City>();
-            this.Cities9 = new HashSet<City>();
-            this.Cities10 = new HashSet<City>();
+            this.City = new HashSet<City>();
         }
     
         public int StateId { get; set; }
         public string StateName { get; set; }
         public Nullable<int> CountryId { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public Nullable<System.DateTime> ModifiedOn { get; set; }
-        public Nullable<System.DateTime> DeletedOn { get; set; }
-        public bool IsActive { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities1 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities3 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities4 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities5 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities6 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities7 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities8 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities9 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<City> Cities10 { get; set; }
+        public virtual ICollection<City> City { get; set; }
         public virtual Country Country { get; set; }
-        public virtual Country Country1 { get; set; }
-        public virtual Country Country2 { get; set; }
-        public virtual Country Country3 { get; set; }
-        public virtual Country Country4 { get; set; }
-        public virtual Country Country5 { get; set; }
-        public virtual Country Country6 { get; set; }
-        public virtual Country Country7 { get; set; }
-        public virtual Country Country8 { get; set; }
-        public virtual Country Country9 { get; set; }
-        public virtual Country Country10 { get; set; }
     }
 }
