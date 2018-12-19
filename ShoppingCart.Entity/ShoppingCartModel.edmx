@@ -1586,399 +1586,7 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ShoppingCartModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="CartId" />
-          </Key>
-          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Cart__ProductId__300424B4" FromRole="Cart" ToRole="Product" />
-          <NavigationProperty Name="UserMaster" Relationship="Self.FK__Cart__UserId__30F848ED" FromRole="Cart" ToRole="UserMaster" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="SubCategory" Relationship="Self.FK__SubCatego__Categ__37A5467C" FromRole="Category" ToRole="SubCategory" />
-        </EntityType>
-        <EntityType Name="City">
-          <Key>
-            <PropertyRef Name="CityId" />
-          </Key>
-          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="StateId" Type="Int32" />
-          <NavigationProperty Name="State" Relationship="Self.FK__City__StateId__31EC6D26" FromRole="City" ToRole="State" />
-        </EntityType>
-        <EntityType Name="Country">
-          <Key>
-            <PropertyRef Name="CountryId" />
-          </Key>
-          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="State" Relationship="Self.FK__State__CountryId__36B12243" FromRole="Country" ToRole="State" />
-        </EntityType>
-        <EntityType Name="Exception">
-          <Key>
-            <PropertyRef Name="ExceptionId" />
-          </Key>
-          <Property Name="ExceptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ExceptionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ExceptionDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ExceptionFileName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Method" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="ExceptionDateTime" Type="DateTime" Precision="3" />
-          <Property Name="ExceptionStatus" Type="Boolean" />
-        </EntityType>
-        <EntityType Name="Images">
-          <Key>
-            <PropertyRef Name="ImageId" />
-          </Key>
-          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Images__ProductI__32E0915F" FromRole="Images" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="OrderDetail">
-          <Key>
-            <PropertyRef Name="OrderDetailId" />
-          </Key>
-          <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderId" Type="Int32" />
-          <Property Name="ProductId" Type="Int32" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <Property Name="TotalPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
-          <NavigationProperty Name="OrderMaster" Relationship="Self.FK__OrderDeta__Order__33D4B598" FromRole="OrderDetail" ToRole="OrderMaster" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__Produ__34C8D9D1" FromRole="OrderDetail" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="OrderMaster">
-          <Key>
-            <PropertyRef Name="OrderId" />
-          </Key>
-          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="ShippingAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="ReceiverMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
-          <Property Name="BillingMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GrossAmount" Type="Decimal" Precision="10" Scale="2" />
-          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ReceiverEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ReceiverFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="ReceiverLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Order__33D4B598" FromRole="OrderMaster" ToRole="OrderDetail" />
-        </EntityType>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductId" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SubCategoryId" Type="Int32" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <Property Name="Quantity" Type="Int32" />
-          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__ProductId__300424B4" FromRole="Product" ToRole="Cart" />
-          <NavigationProperty Name="Images" Relationship="Self.FK__Images__ProductI__32E0915F" FromRole="Product" ToRole="Images" />
-          <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Produ__34C8D9D1" FromRole="Product" ToRole="OrderDetail" />
-          <NavigationProperty Name="SubCategory" Relationship="Self.FK__Product__SubCate__35BCFE0A" FromRole="Product" ToRole="SubCategory" />
-        </EntityType>
-        <EntityType Name="State">
-          <Key>
-            <PropertyRef Name="StateId" />
-          </Key>
-          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="CountryId" Type="Int32" />
-          <NavigationProperty Name="City" Relationship="Self.FK__City__StateId__31EC6D26" FromRole="State" ToRole="City" />
-          <NavigationProperty Name="Country" Relationship="Self.FK__State__CountryId__36B12243" FromRole="State" ToRole="Country" />
-        </EntityType>
-        <EntityType Name="SubCategory">
-          <Key>
-            <PropertyRef Name="SubCategoryId" />
-          </Key>
-          <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CategoryId" Type="Int32" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__SubCatego__Categ__37A5467C" FromRole="SubCategory" ToRole="Category" />
-          <NavigationProperty Name="Product" Relationship="Self.FK__Product__SubCate__35BCFE0A" FromRole="SubCategory" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Temp">
-          <Key>
-            <PropertyRef Name="TempId" />
-          </Key>
-          <Property Name="TempId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="UserDetail">
-          <Key>
-            <PropertyRef Name="UserDetailId" />
-          </Key>
-          <Property Name="UserDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" />
-          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="PermanentAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="AlternateAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="UserMaster" Relationship="Self.FK__UserDetai__UserI__38996AB5" FromRole="UserDetail" ToRole="UserMaster" />
-        </EntityType>
-        <EntityType Name="UserMaster">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleId" Type="Int32" />
-          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserPassWord" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreatedBy" Type="Int32" />
-          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedBy" Type="Int32" />
-          <Property Name="IsActive" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__UserId__30F848ED" FromRole="UserMaster" ToRole="Cart" />
-          <NavigationProperty Name="UserDetail" Relationship="Self.FK__UserDetai__UserI__38996AB5" FromRole="UserMaster" ToRole="UserDetail" />
-          <NavigationProperty Name="UserRole" Relationship="Self.FK__UserMaste__RoleI__398D8EEE" FromRole="UserMaster" ToRole="UserRole" />
-        </EntityType>
-        <EntityType Name="UserRole">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UserMaster" Relationship="Self.FK__UserMaste__RoleI__398D8EEE" FromRole="UserRole" ToRole="UserMaster" />
-        </EntityType>
-        <EntityType Name="ViewProductDetails">
-          <Key>
-            <PropertyRef Name="ProductId" />
-            <PropertyRef Name="Price" />
-            <PropertyRef Name="SubCategoryName" />
-          </Key>
-          <Property Name="ProductId" Type="Int32" Nullable="false" />
-          <Property Name="SubCategoryId" Type="Int32" />
-          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Created_By" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
-          <Property Name="Price" Type="Decimal" Precision="8" Scale="2" Nullable="false" />
-          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="isActive" Type="Boolean" />
-          <Property Name="Quantity" Type="Int32" />
-          <Property Name="SubCategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <Association Name="FK__Cart__ProductId__300424B4">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Cart__UserId__30F848ED">
-          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
-          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserMaster">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SubCatego__Categ__37A5467C">
-          <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="SubCategory">
-              <PropertyRef Name="CategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__City__StateId__31EC6D26">
-          <End Role="State" Type="Self.State" Multiplicity="0..1" />
-          <End Role="City" Type="Self.City" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="State">
-              <PropertyRef Name="StateId" />
-            </Principal>
-            <Dependent Role="City">
-              <PropertyRef Name="StateId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__State__CountryId__36B12243">
-          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
-          <End Role="State" Type="Self.State" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Country">
-              <PropertyRef Name="CountryId" />
-            </Principal>
-            <Dependent Role="State">
-              <PropertyRef Name="CountryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Images__ProductI__32E0915F">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="Images" Type="Self.Images" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="Images">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__OrderDeta__Order__33D4B598">
-          <End Role="OrderMaster" Type="Self.OrderMaster" Multiplicity="0..1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OrderMaster">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__OrderDeta__Produ__34C8D9D1">
-          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
-          <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductId" />
-            </Principal>
-            <Dependent Role="OrderDetail">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Product__SubCate__35BCFE0A">
-          <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="0..1" />
-          <End Role="Product" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SubCategory">
-              <PropertyRef Name="SubCategoryId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="SubCategoryId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserDetai__UserI__38996AB5">
-          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="0..1" />
-          <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserMaster">
-              <PropertyRef Name="UserId" />
-            </Principal>
-            <Dependent Role="UserDetail">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserMaste__RoleI__398D8EEE">
-          <End Role="UserRole" Type="Self.UserRole" Multiplicity="0..1" />
-          <End Role="UserMaster" Type="Self.UserMaster" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UserRole">
-              <PropertyRef Name="RoleId" />
-            </Principal>
-            <Dependent Role="UserMaster">
-              <PropertyRef Name="RoleId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ShoppingCartEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Cart" EntityType="Self.Cart" />
-          <EntitySet Name="Category" EntityType="Self.Category" />
-          <EntitySet Name="City" EntityType="Self.City" />
-          <EntitySet Name="Country" EntityType="Self.Country" />
-          <EntitySet Name="Exception" EntityType="Self.Exception" />
-          <EntitySet Name="Images" EntityType="Self.Images" />
-          <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
-          <EntitySet Name="OrderMaster" EntityType="Self.OrderMaster" />
-          <EntitySet Name="Product" EntityType="Self.Product" />
-          <EntitySet Name="State" EntityType="Self.State" />
-          <EntitySet Name="SubCategory" EntityType="Self.SubCategory" />
-          <EntitySet Name="Temp" EntityType="Self.Temp" />
-          <EntitySet Name="UserDetail" EntityType="Self.UserDetail" />
-          <EntitySet Name="UserMaster" EntityType="Self.UserMaster" />
-          <EntitySet Name="UserRole" EntityType="Self.UserRole" />
-          <EntitySet Name="ViewProductDetails" EntityType="Self.ViewProductDetails" />
-          <AssociationSet Name="FK__Cart__ProductId__300424B4" Association="Self.FK__Cart__ProductId__300424B4">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Cart" EntitySet="Cart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Cart__UserId__30F848ED" Association="Self.FK__Cart__UserId__30F848ED">
-            <End Role="UserMaster" EntitySet="UserMaster" />
-            <End Role="Cart" EntitySet="Cart" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SubCatego__Categ__37A5467C" Association="Self.FK__SubCatego__Categ__37A5467C">
-            <End Role="Category" EntitySet="Category" />
-            <End Role="SubCategory" EntitySet="SubCategory" />
-          </AssociationSet>
-          <AssociationSet Name="FK__City__StateId__31EC6D26" Association="Self.FK__City__StateId__31EC6D26">
-            <End Role="State" EntitySet="State" />
-            <End Role="City" EntitySet="City" />
-          </AssociationSet>
-          <AssociationSet Name="FK__State__CountryId__36B12243" Association="Self.FK__State__CountryId__36B12243">
-            <End Role="Country" EntitySet="Country" />
-            <End Role="State" EntitySet="State" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Images__ProductI__32E0915F" Association="Self.FK__Images__ProductI__32E0915F">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="Images" EntitySet="Images" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Order__33D4B598" Association="Self.FK__OrderDeta__Order__33D4B598">
-            <End Role="OrderMaster" EntitySet="OrderMaster" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__OrderDeta__Produ__34C8D9D1" Association="Self.FK__OrderDeta__Produ__34C8D9D1">
-            <End Role="Product" EntitySet="Product" />
-            <End Role="OrderDetail" EntitySet="OrderDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Product__SubCate__35BCFE0A" Association="Self.FK__Product__SubCate__35BCFE0A">
-            <End Role="SubCategory" EntitySet="SubCategory" />
-            <End Role="Product" EntitySet="Product" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserDetai__UserI__38996AB5" Association="Self.FK__UserDetai__UserI__38996AB5">
-            <End Role="UserMaster" EntitySet="UserMaster" />
-            <End Role="UserDetail" EntitySet="UserDetail" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserMaste__RoleI__398D8EEE" Association="Self.FK__UserMaste__RoleI__398D8EEE">
-            <End Role="UserRole" EntitySet="UserRole" />
-            <End Role="UserMaster" EntitySet="UserMaster" />
-          </AssociationSet>
           <FunctionImport Name="GetCartProducts" ReturnType="Collection(ShoppingCartModel.GetCartProducts_Result)">
           <Parameter Name="userId" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -2280,67 +1888,8 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
             <Parameter Name="mobileNumber" Mode="In" Type="String" />
             <Parameter Name="city" Mode="In" Type="String" />
           </FunctionImport>
-          <EntitySet Name="aspnet_Applications" EntityType="ShoppingCartModel.aspnet_Applications" />
-          <EntitySet Name="aspnet_Membership" EntityType="ShoppingCartModel.aspnet_Membership" />
-          <EntitySet Name="aspnet_Paths" EntityType="ShoppingCartModel.aspnet_Paths" />
-          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="ShoppingCartModel.aspnet_PersonalizationAllUsers" />
-          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="ShoppingCartModel.aspnet_PersonalizationPerUser" />
-          <EntitySet Name="aspnet_Profile" EntityType="ShoppingCartModel.aspnet_Profile" />
-          <EntitySet Name="aspnet_Roles" EntityType="ShoppingCartModel.aspnet_Roles" />
-          <EntitySet Name="aspnet_SchemaVersions" EntityType="ShoppingCartModel.aspnet_SchemaVersions" />
-          <EntitySet Name="aspnet_Users" EntityType="ShoppingCartModel.aspnet_Users" />
-          <EntitySet Name="aspnet_WebEvent_Events" EntityType="ShoppingCartModel.aspnet_WebEvent_Events" />
-          <EntitySet Name="vw_aspnet_Applications" EntityType="ShoppingCartModel.vw_aspnet_Applications" />
-          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="ShoppingCartModel.vw_aspnet_MembershipUsers" />
-          <EntitySet Name="vw_aspnet_Profiles" EntityType="ShoppingCartModel.vw_aspnet_Profiles" />
-          <EntitySet Name="vw_aspnet_Roles" EntityType="ShoppingCartModel.vw_aspnet_Roles" />
-          <EntitySet Name="vw_aspnet_Users" EntityType="ShoppingCartModel.vw_aspnet_Users" />
-          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="ShoppingCartModel.vw_aspnet_UsersInRoles" />
-          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ShoppingCartModel.vw_aspnet_WebPartState_Paths" />
-          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ShoppingCartModel.vw_aspnet_WebPartState_Shared" />
-          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ShoppingCartModel.vw_aspnet_WebPartState_User" />
-          <AssociationSet Name="FK__aspnet_Me__Appli__19DFD96B" Association="ShoppingCartModel.FK__aspnet_Me__Appli__19DFD96B">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pa__Appli__4B7734FF" Association="ShoppingCartModel.FK__aspnet_Pa__Appli__4B7734FF">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Ro__Appli__3864608B" Association="ShoppingCartModel.FK__aspnet_Ro__Appli__3864608B">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Us__Appli__09A971A2" Association="ShoppingCartModel.FK__aspnet_Us__Appli__09A971A2">
-            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Me__UserI__1AD3FDA4" Association="ShoppingCartModel.FK__aspnet_Me__UserI__1AD3FDA4">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__PathI__51300E55" Association="ShoppingCartModel.FK__aspnet_Pe__PathI__51300E55">
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__PathI__55009F39" Association="ShoppingCartModel.FK__aspnet_Pe__PathI__55009F39">
-            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
-            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pe__UserI__55F4C372" Association="ShoppingCartModel.FK__aspnet_Pe__UserI__55F4C372">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK__aspnet_Pr__UserI__2EDAF651" Association="ShoppingCartModel.FK__aspnet_Pr__UserI__2EDAF651">
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
-          </AssociationSet>
-          <AssociationSet Name="aspnet_UsersInRoles" Association="ShoppingCartModel.aspnet_UsersInRoles">
-            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
-            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
-          </AssociationSet>
           <FunctionImport Name="aspnet_AnyDataInTables" ReturnType="Collection(String)">
-            <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
+          <Parameter Name="TablesToCheck" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Applications_CreateApplication">
             <Parameter Name="ApplicationName" Mode="In" Type="String" />
@@ -2595,17 +2144,17 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
             <Parameter Name="DeleteOnlyIfRoleIsEmpty" Mode="In" Type="Boolean" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Roles_GetAllRoles" ReturnType="Collection(String)">
-            <Parameter Name="ApplicationName" Mode="In" Type="String" />
+          <Parameter Name="ApplicationName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Roles_RoleExists">
             <Parameter Name="ApplicationName" Mode="In" Type="String" />
             <Parameter Name="RoleName" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Setup_RemoveAllRoleMembers">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_Setup_RestorePermissions">
-            <Parameter Name="name" Mode="In" Type="String" />
+          <Parameter Name="name" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="aspnet_UnRegisterSchemaVersion">
             <Parameter Name="Feature" Mode="In" Type="String" />
@@ -2670,6 +2219,125 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
             <Parameter Name="ExceptionType" Mode="In" Type="String" />
             <Parameter Name="Details" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="aspnet_Applications" EntityType="ShoppingCartModel.aspnet_Applications" />
+          <EntitySet Name="aspnet_Membership" EntityType="ShoppingCartModel.aspnet_Membership" />
+          <EntitySet Name="aspnet_Paths" EntityType="ShoppingCartModel.aspnet_Paths" />
+          <EntitySet Name="aspnet_PersonalizationAllUsers" EntityType="ShoppingCartModel.aspnet_PersonalizationAllUsers" />
+          <EntitySet Name="aspnet_PersonalizationPerUser" EntityType="ShoppingCartModel.aspnet_PersonalizationPerUser" />
+          <EntitySet Name="aspnet_Profile" EntityType="ShoppingCartModel.aspnet_Profile" />
+          <EntitySet Name="aspnet_Roles" EntityType="ShoppingCartModel.aspnet_Roles" />
+          <EntitySet Name="aspnet_SchemaVersions" EntityType="ShoppingCartModel.aspnet_SchemaVersions" />
+          <EntitySet Name="aspnet_Users" EntityType="ShoppingCartModel.aspnet_Users" />
+          <EntitySet Name="aspnet_WebEvent_Events" EntityType="ShoppingCartModel.aspnet_WebEvent_Events" />
+          <EntitySet Name="Cart" EntityType="ShoppingCartModel.Cart" />
+          <EntitySet Name="Category" EntityType="ShoppingCartModel.Category" />
+          <EntitySet Name="City" EntityType="ShoppingCartModel.City" />
+          <EntitySet Name="Country" EntityType="ShoppingCartModel.Country" />
+          <EntitySet Name="Exception" EntityType="ShoppingCartModel.Exception" />
+          <EntitySet Name="Images" EntityType="ShoppingCartModel.Images" />
+          <EntitySet Name="OrderDetail" EntityType="ShoppingCartModel.OrderDetail" />
+          <EntitySet Name="OrderMaster" EntityType="ShoppingCartModel.OrderMaster" />
+          <EntitySet Name="Product" EntityType="ShoppingCartModel.Product" />
+          <EntitySet Name="State" EntityType="ShoppingCartModel.State" />
+          <EntitySet Name="SubCategory" EntityType="ShoppingCartModel.SubCategory" />
+          <EntitySet Name="Temp" EntityType="ShoppingCartModel.Temp" />
+          <EntitySet Name="UserDetail" EntityType="ShoppingCartModel.UserDetail" />
+          <EntitySet Name="UserMaster" EntityType="ShoppingCartModel.UserMaster" />
+          <EntitySet Name="UserRole" EntityType="ShoppingCartModel.UserRole" />
+          <EntitySet Name="ViewProductDetails" EntityType="ShoppingCartModel.ViewProductDetails" />
+          <EntitySet Name="vw_aspnet_Applications" EntityType="ShoppingCartModel.vw_aspnet_Applications" />
+          <EntitySet Name="vw_aspnet_MembershipUsers" EntityType="ShoppingCartModel.vw_aspnet_MembershipUsers" />
+          <EntitySet Name="vw_aspnet_Profiles" EntityType="ShoppingCartModel.vw_aspnet_Profiles" />
+          <EntitySet Name="vw_aspnet_Roles" EntityType="ShoppingCartModel.vw_aspnet_Roles" />
+          <EntitySet Name="vw_aspnet_Users" EntityType="ShoppingCartModel.vw_aspnet_Users" />
+          <EntitySet Name="vw_aspnet_UsersInRoles" EntityType="ShoppingCartModel.vw_aspnet_UsersInRoles" />
+          <EntitySet Name="vw_aspnet_WebPartState_Paths" EntityType="ShoppingCartModel.vw_aspnet_WebPartState_Paths" />
+          <EntitySet Name="vw_aspnet_WebPartState_Shared" EntityType="ShoppingCartModel.vw_aspnet_WebPartState_Shared" />
+          <EntitySet Name="vw_aspnet_WebPartState_User" EntityType="ShoppingCartModel.vw_aspnet_WebPartState_User" />
+          <AssociationSet Name="FK__aspnet_Me__Appli__19DFD96B" Association="ShoppingCartModel.FK__aspnet_Me__Appli__19DFD96B">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pa__Appli__4B7734FF" Association="ShoppingCartModel.FK__aspnet_Pa__Appli__4B7734FF">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Ro__Appli__3864608B" Association="ShoppingCartModel.FK__aspnet_Ro__Appli__3864608B">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Us__Appli__09A971A2" Association="ShoppingCartModel.FK__aspnet_Us__Appli__09A971A2">
+            <End Role="aspnet_Applications" EntitySet="aspnet_Applications" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Me__UserI__1AD3FDA4" Association="ShoppingCartModel.FK__aspnet_Me__UserI__1AD3FDA4">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Membership" EntitySet="aspnet_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__51300E55" Association="ShoppingCartModel.FK__aspnet_Pe__PathI__51300E55">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationAllUsers" EntitySet="aspnet_PersonalizationAllUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__PathI__55009F39" Association="ShoppingCartModel.FK__aspnet_Pe__PathI__55009F39">
+            <End Role="aspnet_Paths" EntitySet="aspnet_Paths" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pe__UserI__55F4C372" Association="ShoppingCartModel.FK__aspnet_Pe__UserI__55F4C372">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_PersonalizationPerUser" EntitySet="aspnet_PersonalizationPerUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK__aspnet_Pr__UserI__2EDAF651" Association="ShoppingCartModel.FK__aspnet_Pr__UserI__2EDAF651">
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+            <End Role="aspnet_Profile" EntitySet="aspnet_Profile" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__ProductId__300424B4" Association="ShoppingCartModel.FK__Cart__ProductId__300424B4">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Cart__UserId__30F848ED" Association="ShoppingCartModel.FK__Cart__UserId__30F848ED">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SubCatego__Categ__37A5467C" Association="ShoppingCartModel.FK__SubCatego__Categ__37A5467C">
+            <End Role="Category" EntitySet="Category" />
+            <End Role="SubCategory" EntitySet="SubCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK__City__StateId__31EC6D26" Association="ShoppingCartModel.FK__City__StateId__31EC6D26">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK__State__CountryId__36B12243" Association="ShoppingCartModel.FK__State__CountryId__36B12243">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Images__ProductI__32E0915F" Association="ShoppingCartModel.FK__Images__ProductI__32E0915F">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Images" EntitySet="Images" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Order__33D4B598" Association="ShoppingCartModel.FK__OrderDeta__Order__33D4B598">
+            <End Role="OrderMaster" EntitySet="OrderMaster" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderDeta__Produ__34C8D9D1" Association="ShoppingCartModel.FK__OrderDeta__Produ__34C8D9D1">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__SubCate__35BCFE0A" Association="ShoppingCartModel.FK__Product__SubCate__35BCFE0A">
+            <End Role="SubCategory" EntitySet="SubCategory" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserDetai__UserI__38996AB5" Association="ShoppingCartModel.FK__UserDetai__UserI__38996AB5">
+            <End Role="UserMaster" EntitySet="UserMaster" />
+            <End Role="UserDetail" EntitySet="UserDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UserMaste__RoleI__398D8EEE" Association="ShoppingCartModel.FK__UserMaste__RoleI__398D8EEE">
+            <End Role="UserRole" EntitySet="UserRole" />
+            <End Role="UserMaster" EntitySet="UserMaster" />
+          </AssociationSet>
+          <AssociationSet Name="aspnet_UsersInRoles" Association="ShoppingCartModel.aspnet_UsersInRoles">
+            <End Role="aspnet_Roles" EntitySet="aspnet_Roles" />
+            <End Role="aspnet_Users" EntitySet="aspnet_Users" />
+          </AssociationSet>
         </EntityContainer>
         <ComplexType Name="GetCartProducts_Result">
           <Property Type="Int32" Name="CartId" Nullable="false" />
@@ -2920,6 +2588,55 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
           <Property Type="Int32" Name="TempId" Nullable="false" />
           <Property Type="String" Name="ImageUrl" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetPassword_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
+          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column2" Nullable="true" />
+          <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="Column4" Nullable="true" />
+          <Property Type="Int32" Name="Column5" Nullable="true" />
+          <Property Type="Boolean" Name="Column6" Nullable="true" />
+          <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
+          <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetUserByName_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+          <Property Type="Guid" Name="UserId" Nullable="false" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
+          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
+          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
+          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
+          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
+          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="aspnet_Profile_GetProperties_Result">
+          <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
+          <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
+        </ComplexType>
+        <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+          <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
+        </ComplexType>
         <EntityType Name="aspnet_Applications">
           <Key>
             <PropertyRef Name="ApplicationId" />
@@ -3062,6 +2779,206 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
           <Property Name="RequestUrl" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
           <Property Name="ExceptionType" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="Details" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartId" />
+          </Key>
+          <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="Product" Relationship="ShoppingCartModel.FK__Cart__ProductId__300424B4" FromRole="Cart" ToRole="Product" />
+          <NavigationProperty Name="UserMaster" Relationship="ShoppingCartModel.FK__Cart__UserId__30F848ED" FromRole="Cart" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SubCategory" Relationship="ShoppingCartModel.FK__SubCatego__Categ__37A5467C" FromRole="Category" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityId" />
+          </Key>
+          <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StateId" Type="Int32" />
+          <NavigationProperty Name="State" Relationship="ShoppingCartModel.FK__City__StateId__31EC6D26" FromRole="City" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="State" Relationship="ShoppingCartModel.FK__State__CountryId__36B12243" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="Exception">
+          <Key>
+            <PropertyRef Name="ExceptionId" />
+          </Key>
+          <Property Name="ExceptionId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExceptionType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionFileName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="Method" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ExceptionDateTime" Type="DateTime" Precision="3" />
+          <Property Name="ExceptionStatus" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageId" />
+          </Key>
+          <Property Name="ImageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Product" Relationship="ShoppingCartModel.FK__Images__ProductI__32E0915F" FromRole="Images" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailId" />
+          </Key>
+          <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <NavigationProperty Name="OrderMaster" Relationship="ShoppingCartModel.FK__OrderDeta__Order__33D4B598" FromRole="OrderDetail" ToRole="OrderMaster" />
+          <NavigationProperty Name="Product" Relationship="ShoppingCartModel.FK__OrderDeta__Produ__34C8D9D1" FromRole="OrderDetail" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="OrderMaster">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ShippingAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverMobileNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="BillingMode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GrossAmount" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="OrderStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverFirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverLastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="OrderDetail" Relationship="ShoppingCartModel.FK__OrderDeta__Order__33D4B598" FromRole="OrderMaster" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="Quantity" Type="Int32" />
+          <NavigationProperty Name="Cart" Relationship="ShoppingCartModel.FK__Cart__ProductId__300424B4" FromRole="Product" ToRole="Cart" />
+          <NavigationProperty Name="Images" Relationship="ShoppingCartModel.FK__Images__ProductI__32E0915F" FromRole="Product" ToRole="Images" />
+          <NavigationProperty Name="OrderDetail" Relationship="ShoppingCartModel.FK__OrderDeta__Produ__34C8D9D1" FromRole="Product" ToRole="OrderDetail" />
+          <NavigationProperty Name="SubCategory" Relationship="ShoppingCartModel.FK__Product__SubCate__35BCFE0A" FromRole="Product" ToRole="SubCategory" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateId" />
+          </Key>
+          <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CountryId" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="ShoppingCartModel.FK__City__StateId__31EC6D26" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Country" Relationship="ShoppingCartModel.FK__State__CountryId__36B12243" FromRole="State" ToRole="Country" />
+        </EntityType>
+        <EntityType Name="SubCategory">
+          <Key>
+            <PropertyRef Name="SubCategoryId" />
+          </Key>
+          <Property Name="SubCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="SubCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Category" Relationship="ShoppingCartModel.FK__SubCatego__Categ__37A5467C" FromRole="SubCategory" ToRole="Category" />
+          <NavigationProperty Name="Product" Relationship="ShoppingCartModel.FK__Product__SubCate__35BCFE0A" FromRole="SubCategory" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Temp">
+          <Key>
+            <PropertyRef Name="TempId" />
+          </Key>
+          <Property Name="TempId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserDetailId" />
+          </Key>
+          <Property Name="UserDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PermanentAddress" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="AlternateAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="MobileNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="UserMaster" Relationship="ShoppingCartModel.FK__UserDetai__UserI__38996AB5" FromRole="UserDetail" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="UserMaster">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" />
+          <Property Name="EmailId" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserPassWord" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="ModifiedOn" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedBy" Type="Int32" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cart" Relationship="ShoppingCartModel.FK__Cart__UserId__30F848ED" FromRole="UserMaster" ToRole="Cart" />
+          <NavigationProperty Name="UserDetail" Relationship="ShoppingCartModel.FK__UserDetai__UserI__38996AB5" FromRole="UserMaster" ToRole="UserDetail" />
+          <NavigationProperty Name="UserRole" Relationship="ShoppingCartModel.FK__UserMaste__RoleI__398D8EEE" FromRole="UserMaster" ToRole="UserRole" />
+        </EntityType>
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="UserMaster" Relationship="ShoppingCartModel.FK__UserMaste__RoleI__398D8EEE" FromRole="UserRole" ToRole="UserMaster" />
+        </EntityType>
+        <EntityType Name="ViewProductDetails">
+          <Key>
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="SubCategoryName" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="SubCategoryId" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Created_By" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="ProductDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isActive" Type="Boolean" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="SubCategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="vw_aspnet_Applications">
           <Key>
@@ -3302,257 +3219,148 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Cart__ProductId__300424B4">
+          <End Type="ShoppingCartModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Cart__UserId__30F848ED">
+          <End Type="ShoppingCartModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SubCatego__Categ__37A5467C">
+          <End Type="ShoppingCartModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.SubCategory" Role="SubCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="SubCategory">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__City__StateId__31EC6D26">
+          <End Type="ShoppingCartModel.State" Role="State" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.City" Role="City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateId" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__State__CountryId__36B12243">
+          <End Type="ShoppingCartModel.Country" Role="Country" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.State" Role="State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryId" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Images__ProductI__32E0915F">
+          <End Type="ShoppingCartModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.Images" Role="Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Order__33D4B598">
+          <End Type="ShoppingCartModel.OrderMaster" Role="OrderMaster" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrderMaster">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderDeta__Produ__34C8D9D1">
+          <End Type="ShoppingCartModel.Product" Role="Product" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__SubCate__35BCFE0A">
+          <End Type="ShoppingCartModel.SubCategory" Role="SubCategory" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SubCategory">
+              <PropertyRef Name="SubCategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="SubCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserDetai__UserI__38996AB5">
+          <End Type="ShoppingCartModel.UserMaster" Role="UserMaster" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.UserDetail" Role="UserDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserMaster">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="UserDetail">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UserMaste__RoleI__398D8EEE">
+          <End Type="ShoppingCartModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+          <End Type="ShoppingCartModel.UserMaster" Role="UserMaster" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserMaster">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="aspnet_UsersInRoles">
           <End Type="ShoppingCartModel.aspnet_Roles" Role="aspnet_Roles" Multiplicity="*" />
           <End Type="ShoppingCartModel.aspnet_Users" Role="aspnet_Users" Multiplicity="*" />
         </Association>
-        <ComplexType Name="aspnet_Membership_GetPassword_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Membership_GetPasswordWithFormat_Result">
-          <Property Type="String" Name="Column1" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Column2" Nullable="true" />
-          <Property Type="String" Name="Column3" Nullable="true" MaxLength="128" />
-          <Property Type="Int32" Name="Column4" Nullable="true" />
-          <Property Type="Int32" Name="Column5" Nullable="true" />
-          <Property Type="Boolean" Name="Column6" Nullable="true" />
-          <Property Type="DateTime" Name="Column7" Nullable="true" Precision="23" />
-          <Property Type="DateTime" Name="Column8" Nullable="true" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Membership_GetUserByName_Result">
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
-          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
-          <Property Type="Guid" Name="UserId" Nullable="false" />
-          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
-          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Membership_GetUserByUserId_Result">
-          <Property Type="String" Name="Email" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="PasswordQuestion" Nullable="true" MaxLength="256" />
-          <Property Type="String" Name="Comment" Nullable="true" MaxLength="Max" />
-          <Property Type="Boolean" Name="IsApproved" Nullable="false" />
-          <Property Type="DateTime" Name="CreateDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastLoginDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastActivityDate" Nullable="false" Precision="23" />
-          <Property Type="DateTime" Name="LastPasswordChangedDate" Nullable="false" Precision="23" />
-          <Property Type="String" Name="UserName" Nullable="false" MaxLength="256" />
-          <Property Type="Boolean" Name="IsLockedOut" Nullable="false" />
-          <Property Type="DateTime" Name="LastLockoutDate" Nullable="false" Precision="23" />
-        </ComplexType>
-        <ComplexType Name="aspnet_Profile_GetProperties_Result">
-          <Property Type="String" Name="PropertyNames" Nullable="false" MaxLength="Max" />
-          <Property Type="String" Name="PropertyValuesString" Nullable="false" MaxLength="Max" />
-          <Property Type="Binary" Name="PropertyValuesBinary" Nullable="false" MaxLength="Max" />
-        </ComplexType>
-        <ComplexType Name="aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
-          <Property Type="String" Name="Column1" Nullable="false" MaxLength="1" />
-          <Property Type="String" Name="Name" Nullable="false" MaxLength="256" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="ShoppingCartModelStoreContainer" CdmEntityContainer="ShoppingCartEntities">
-          <EntitySetMapping Name="Cart">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="CartId" ColumnName="CartId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Category">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Category">
-              <MappingFragment StoreEntitySet="Category">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="ShoppingCartModel.City">
-              <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="CityId" ColumnName="CityId" />
-                <ScalarProperty Name="CityName" ColumnName="CityName" />
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Country">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Country">
-              <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Exception">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Exception">
-              <MappingFragment StoreEntitySet="Exception">
-                <ScalarProperty Name="ExceptionId" ColumnName="ExceptionId" />
-                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
-                <ScalarProperty Name="ExceptionDetails" ColumnName="ExceptionDetails" />
-                <ScalarProperty Name="ExceptionFileName" ColumnName="ExceptionFileName" />
-                <ScalarProperty Name="Method" ColumnName="Method" />
-                <ScalarProperty Name="ExceptionDateTime" ColumnName="ExceptionDateTime" />
-                <ScalarProperty Name="ExceptionStatus" ColumnName="ExceptionStatus" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Images">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Images">
-              <MappingFragment StoreEntitySet="Images">
-                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderDetail">
-            <EntityTypeMapping TypeName="ShoppingCartModel.OrderDetail">
-              <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderMaster">
-            <EntityTypeMapping TypeName="ShoppingCartModel.OrderMaster">
-              <MappingFragment StoreEntitySet="OrderMaster">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
-                <ScalarProperty Name="ReceiverMobileNumber" ColumnName="ReceiverMobileNumber" />
-                <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
-                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
-                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
-                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
-                <ScalarProperty Name="ReceiverEmailId" ColumnName="ReceiverEmailId" />
-                <ScalarProperty Name="ReceiverFirstName" ColumnName="ReceiverFirstName" />
-                <ScalarProperty Name="ReceiverLastName" ColumnName="ReceiverLastName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Product">
-              <MappingFragment StoreEntitySet="Product">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="State">
-            <EntityTypeMapping TypeName="ShoppingCartModel.State">
-              <MappingFragment StoreEntitySet="State">
-                <ScalarProperty Name="StateId" ColumnName="StateId" />
-                <ScalarProperty Name="StateName" ColumnName="StateName" />
-                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubCategory">
-            <EntityTypeMapping TypeName="ShoppingCartModel.SubCategory">
-              <MappingFragment StoreEntitySet="SubCategory">
-                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Temp">
-            <EntityTypeMapping TypeName="ShoppingCartModel.Temp">
-              <MappingFragment StoreEntitySet="Temp">
-                <ScalarProperty Name="TempId" ColumnName="TempId" />
-                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserDetail">
-            <EntityTypeMapping TypeName="ShoppingCartModel.UserDetail">
-              <MappingFragment StoreEntitySet="UserDetail">
-                <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
-                <ScalarProperty Name="AlternateAddress" ColumnName="AlternateAddress" />
-                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
-                <ScalarProperty Name="City" ColumnName="City" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserMaster">
-            <EntityTypeMapping TypeName="ShoppingCartModel.UserMaster">
-              <MappingFragment StoreEntitySet="UserMaster">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
-                <ScalarProperty Name="UserPassWord" ColumnName="UserPassWord" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
-                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserRole">
-            <EntityTypeMapping TypeName="ShoppingCartModel.UserRole">
-              <MappingFragment StoreEntitySet="UserRole">
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ViewProductDetails">
-            <EntityTypeMapping TypeName="ShoppingCartModel.ViewProductDetails">
-              <MappingFragment StoreEntitySet="ViewProductDetails">
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
-                <ScalarProperty Name="isActive" ColumnName="isActive" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="GetCartProducts" FunctionName="ShoppingCartModel.Store.GetCartProducts">
             <ResultMapping>
               <ComplexTypeMapping TypeName="ShoppingCartModel.GetCartProducts_Result">
@@ -3970,6 +3778,128 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
           <FunctionImportMapping FunctionImportName="STP_UpdateSubCategories" FunctionName="ShoppingCartModel.Store.STP_UpdateSubCategories" />
           <FunctionImportMapping FunctionImportName="STP_UpdateUser" FunctionName="ShoppingCartModel.Store.STP_UpdateUser" />
           <FunctionImportMapping FunctionImportName="STP_UpdateUserProfile" FunctionName="ShoppingCartModel.Store.STP_UpdateUserProfile" />
+          <FunctionImportMapping FunctionImportName="aspnet_AnyDataInTables" FunctionName="ShoppingCartModel.Store.aspnet_AnyDataInTables" />
+          <FunctionImportMapping FunctionImportName="aspnet_Applications_CreateApplication" FunctionName="ShoppingCartModel.Store.aspnet_Applications_CreateApplication" />
+          <FunctionImportMapping FunctionImportName="aspnet_CheckSchemaVersion" FunctionName="ShoppingCartModel.Store.aspnet_CheckSchemaVersion" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_ChangePasswordQuestionAndAnswer" FunctionName="ShoppingCartModel.Store.aspnet_Membership_ChangePasswordQuestionAndAnswer" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_CreateUser" FunctionName="ShoppingCartModel.Store.aspnet_Membership_CreateUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByEmail" FunctionName="ShoppingCartModel.Store.aspnet_Membership_FindUsersByEmail" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByName" FunctionName="ShoppingCartModel.Store.aspnet_Membership_FindUsersByName" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetAllUsers" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetAllUsers" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetNumberOfUsersOnline" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetNumberOfUsersOnline" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPassword" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetPassword">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetPassword_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPasswordWithFormat" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetPasswordWithFormat">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetPasswordWithFormat_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Column2" ColumnName="Column2" />
+                <ScalarProperty Name="Column3" ColumnName="Column3" />
+                <ScalarProperty Name="Column4" ColumnName="Column4" />
+                <ScalarProperty Name="Column5" ColumnName="Column5" />
+                <ScalarProperty Name="Column6" ColumnName="Column6" />
+                <ScalarProperty Name="Column7" ColumnName="Column7" />
+                <ScalarProperty Name="Column8" ColumnName="Column8" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByEmail" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetUserByEmail" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByName" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetUserByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetUserByName_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByUserId" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetUserByUserId">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetUserByUserId_Result">
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
+                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_ResetPassword" FunctionName="ShoppingCartModel.Store.aspnet_Membership_ResetPassword" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_SetPassword" FunctionName="ShoppingCartModel.Store.aspnet_Membership_SetPassword" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_UnlockUser" FunctionName="ShoppingCartModel.Store.aspnet_Membership_UnlockUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUser" FunctionName="ShoppingCartModel.Store.aspnet_Membership_UpdateUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUserInfo" FunctionName="ShoppingCartModel.Store.aspnet_Membership_UpdateUserInfo" />
+          <FunctionImportMapping FunctionImportName="aspnet_Paths_CreatePath" FunctionName="ShoppingCartModel.Store.aspnet_Paths_CreatePath" />
+          <FunctionImportMapping FunctionImportName="aspnet_Personalization_GetApplicationId" FunctionName="ShoppingCartModel.Store.aspnet_Personalization_GetApplicationId" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_DeleteAllState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_DeleteAllState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_FindState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_FindState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_GetCountOfState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_GetCountOfState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetSharedState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_ResetSharedState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetUserState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_ResetUserState" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_GetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAllUsers_GetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_ResetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAllUsers_ResetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_SetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAllUsers_SetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_GetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationPerUser_GetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_ResetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationPerUser_ResetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_SetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationPerUser_SetPageSettings" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteInactiveProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_DeleteInactiveProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_DeleteProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetNumberOfInactiveProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_GetNumberOfInactiveProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_GetProfiles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProperties" FunctionName="ShoppingCartModel.Store.aspnet_Profile_GetProperties">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Profile_GetProperties_Result">
+                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
+                <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
+                <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_Profile_SetProperties" FunctionName="ShoppingCartModel.Store.aspnet_Profile_SetProperties" />
+          <FunctionImportMapping FunctionImportName="aspnet_RegisterSchemaVersion" FunctionName="ShoppingCartModel.Store.aspnet_RegisterSchemaVersion" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_CreateRole" FunctionName="ShoppingCartModel.Store.aspnet_Roles_CreateRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_DeleteRole" FunctionName="ShoppingCartModel.Store.aspnet_Roles_DeleteRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_GetAllRoles" FunctionName="ShoppingCartModel.Store.aspnet_Roles_GetAllRoles" />
+          <FunctionImportMapping FunctionImportName="aspnet_Roles_RoleExists" FunctionName="ShoppingCartModel.Store.aspnet_Roles_RoleExists" />
+          <FunctionImportMapping FunctionImportName="aspnet_Setup_RemoveAllRoleMembers" FunctionName="ShoppingCartModel.Store.aspnet_Setup_RemoveAllRoleMembers" />
+          <FunctionImportMapping FunctionImportName="aspnet_Setup_RestorePermissions" FunctionName="ShoppingCartModel.Store.aspnet_Setup_RestorePermissions" />
+          <FunctionImportMapping FunctionImportName="aspnet_UnRegisterSchemaVersion" FunctionName="ShoppingCartModel.Store.aspnet_UnRegisterSchemaVersion" />
+          <FunctionImportMapping FunctionImportName="aspnet_Users_CreateUser" FunctionName="ShoppingCartModel.Store.aspnet_Users_CreateUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_Users_DeleteUser" FunctionName="ShoppingCartModel.Store.aspnet_Users_DeleteUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_AddUsersToRoles" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_AddUsersToRoles" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_FindUsersInRole" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_FindUsersInRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetRolesForUser" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_GetRolesForUser" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetUsersInRoles" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_GetUsersInRoles" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_IsUserInRole" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_IsUserInRole" />
+          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_RemoveUsersFromRoles" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_RemoveUsersFromRoles">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="ShoppingCartModel.Store.aspnet_WebEvent_LogEvent" />
           <EntitySetMapping Name="aspnet_Applications">
             <EntityTypeMapping TypeName="ShoppingCartModel.aspnet_Applications">
               <MappingFragment StoreEntitySet="aspnet_Applications">
@@ -4102,6 +4032,198 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CartId" ColumnName="CartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Category">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Category">
+              <MappingFragment StoreEntitySet="Category">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="ShoppingCartModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Exception">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Exception">
+              <MappingFragment StoreEntitySet="Exception">
+                <ScalarProperty Name="ExceptionStatus" ColumnName="ExceptionStatus" />
+                <ScalarProperty Name="ExceptionDateTime" ColumnName="ExceptionDateTime" />
+                <ScalarProperty Name="Method" ColumnName="Method" />
+                <ScalarProperty Name="ExceptionFileName" ColumnName="ExceptionFileName" />
+                <ScalarProperty Name="ExceptionDetails" ColumnName="ExceptionDetails" />
+                <ScalarProperty Name="ExceptionType" ColumnName="ExceptionType" />
+                <ScalarProperty Name="ExceptionId" ColumnName="ExceptionId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Images">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ImageId" ColumnName="ImageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderDetail">
+            <EntityTypeMapping TypeName="ShoppingCartModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderDetailId" ColumnName="OrderDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderMaster">
+            <EntityTypeMapping TypeName="ShoppingCartModel.OrderMaster">
+              <MappingFragment StoreEntitySet="OrderMaster">
+                <ScalarProperty Name="ReceiverLastName" ColumnName="ReceiverLastName" />
+                <ScalarProperty Name="ReceiverFirstName" ColumnName="ReceiverFirstName" />
+                <ScalarProperty Name="ReceiverEmailId" ColumnName="ReceiverEmailId" />
+                <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="GrossAmount" ColumnName="GrossAmount" />
+                <ScalarProperty Name="BillingMode" ColumnName="BillingMode" />
+                <ScalarProperty Name="ReceiverMobileNumber" ColumnName="ReceiverMobileNumber" />
+                <ScalarProperty Name="ShippingAddress" ColumnName="ShippingAddress" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="ShoppingCartModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateId" ColumnName="StateId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SubCategory">
+            <EntityTypeMapping TypeName="ShoppingCartModel.SubCategory">
+              <MappingFragment StoreEntitySet="SubCategory">
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Temp">
+            <EntityTypeMapping TypeName="ShoppingCartModel.Temp">
+              <MappingFragment StoreEntitySet="Temp">
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+                <ScalarProperty Name="TempId" ColumnName="TempId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetail">
+            <EntityTypeMapping TypeName="ShoppingCartModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetail">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+                <ScalarProperty Name="AlternateAddress" ColumnName="AlternateAddress" />
+                <ScalarProperty Name="PermanentAddress" ColumnName="PermanentAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserDetailId" ColumnName="UserDetailId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserMaster">
+            <EntityTypeMapping TypeName="ShoppingCartModel.UserMaster">
+              <MappingFragment StoreEntitySet="UserMaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="ModifiedOn" ColumnName="ModifiedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="UserPassWord" ColumnName="UserPassWord" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserRole">
+            <EntityTypeMapping TypeName="ShoppingCartModel.UserRole">
+              <MappingFragment StoreEntitySet="UserRole">
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ViewProductDetails">
+            <EntityTypeMapping TypeName="ShoppingCartModel.ViewProductDetails">
+              <MappingFragment StoreEntitySet="ViewProductDetails">
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="isActive" ColumnName="isActive" />
+                <ScalarProperty Name="ProductDescription" ColumnName="ProductDescription" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Created_By" ColumnName="Created_By" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="SubCategoryId" ColumnName="SubCategoryId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="vw_aspnet_Applications">
             <EntityTypeMapping TypeName="ShoppingCartModel.vw_aspnet_Applications">
               <MappingFragment StoreEntitySet="vw_aspnet_Applications">
@@ -4219,128 +4341,6 @@ warning 6002: The table/view 'ShoppingCartOldDB.dbo.vw_aspnet_WebPartState_User'
               <ScalarProperty Name="RoleId" ColumnName="RoleId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_AnyDataInTables" FunctionName="ShoppingCartModel.Store.aspnet_AnyDataInTables" />
-          <FunctionImportMapping FunctionImportName="aspnet_Applications_CreateApplication" FunctionName="ShoppingCartModel.Store.aspnet_Applications_CreateApplication" />
-          <FunctionImportMapping FunctionImportName="aspnet_CheckSchemaVersion" FunctionName="ShoppingCartModel.Store.aspnet_CheckSchemaVersion" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_ChangePasswordQuestionAndAnswer" FunctionName="ShoppingCartModel.Store.aspnet_Membership_ChangePasswordQuestionAndAnswer" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_CreateUser" FunctionName="ShoppingCartModel.Store.aspnet_Membership_CreateUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByEmail" FunctionName="ShoppingCartModel.Store.aspnet_Membership_FindUsersByEmail" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_FindUsersByName" FunctionName="ShoppingCartModel.Store.aspnet_Membership_FindUsersByName" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetAllUsers" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetAllUsers" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetNumberOfUsersOnline" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetNumberOfUsersOnline" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPassword" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetPassword">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetPassword_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetPasswordWithFormat" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetPasswordWithFormat">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetPasswordWithFormat_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Column2" ColumnName="Column2" />
-                <ScalarProperty Name="Column3" ColumnName="Column3" />
-                <ScalarProperty Name="Column4" ColumnName="Column4" />
-                <ScalarProperty Name="Column5" ColumnName="Column5" />
-                <ScalarProperty Name="Column6" ColumnName="Column6" />
-                <ScalarProperty Name="Column7" ColumnName="Column7" />
-                <ScalarProperty Name="Column8" ColumnName="Column8" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByEmail" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetUserByEmail" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByName" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetUserByName">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetUserByName_Result">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_GetUserByUserId" FunctionName="ShoppingCartModel.Store.aspnet_Membership_GetUserByUserId">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Membership_GetUserByUserId_Result">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="PasswordQuestion" ColumnName="PasswordQuestion" />
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="LastLoginDate" ColumnName="LastLoginDate" />
-                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
-                <ScalarProperty Name="LastPasswordChangedDate" ColumnName="LastPasswordChangedDate" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="IsLockedOut" ColumnName="IsLockedOut" />
-                <ScalarProperty Name="LastLockoutDate" ColumnName="LastLockoutDate" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_ResetPassword" FunctionName="ShoppingCartModel.Store.aspnet_Membership_ResetPassword" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_SetPassword" FunctionName="ShoppingCartModel.Store.aspnet_Membership_SetPassword" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_UnlockUser" FunctionName="ShoppingCartModel.Store.aspnet_Membership_UnlockUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUser" FunctionName="ShoppingCartModel.Store.aspnet_Membership_UpdateUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Membership_UpdateUserInfo" FunctionName="ShoppingCartModel.Store.aspnet_Membership_UpdateUserInfo" />
-          <FunctionImportMapping FunctionImportName="aspnet_Paths_CreatePath" FunctionName="ShoppingCartModel.Store.aspnet_Paths_CreatePath" />
-          <FunctionImportMapping FunctionImportName="aspnet_Personalization_GetApplicationId" FunctionName="ShoppingCartModel.Store.aspnet_Personalization_GetApplicationId" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_DeleteAllState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_DeleteAllState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_FindState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_FindState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_GetCountOfState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_GetCountOfState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetSharedState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_ResetSharedState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAdministration_ResetUserState" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAdministration_ResetUserState" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_GetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAllUsers_GetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_ResetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAllUsers_ResetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationAllUsers_SetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationAllUsers_SetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_GetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationPerUser_GetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_ResetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationPerUser_ResetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_PersonalizationPerUser_SetPageSettings" FunctionName="ShoppingCartModel.Store.aspnet_PersonalizationPerUser_SetPageSettings" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteInactiveProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_DeleteInactiveProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_DeleteProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_DeleteProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetNumberOfInactiveProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_GetNumberOfInactiveProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProfiles" FunctionName="ShoppingCartModel.Store.aspnet_Profile_GetProfiles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_GetProperties" FunctionName="ShoppingCartModel.Store.aspnet_Profile_GetProperties">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_Profile_GetProperties_Result">
-                <ScalarProperty Name="PropertyNames" ColumnName="PropertyNames" />
-                <ScalarProperty Name="PropertyValuesString" ColumnName="PropertyValuesString" />
-                <ScalarProperty Name="PropertyValuesBinary" ColumnName="PropertyValuesBinary" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_Profile_SetProperties" FunctionName="ShoppingCartModel.Store.aspnet_Profile_SetProperties" />
-          <FunctionImportMapping FunctionImportName="aspnet_RegisterSchemaVersion" FunctionName="ShoppingCartModel.Store.aspnet_RegisterSchemaVersion" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_CreateRole" FunctionName="ShoppingCartModel.Store.aspnet_Roles_CreateRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_DeleteRole" FunctionName="ShoppingCartModel.Store.aspnet_Roles_DeleteRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_GetAllRoles" FunctionName="ShoppingCartModel.Store.aspnet_Roles_GetAllRoles" />
-          <FunctionImportMapping FunctionImportName="aspnet_Roles_RoleExists" FunctionName="ShoppingCartModel.Store.aspnet_Roles_RoleExists" />
-          <FunctionImportMapping FunctionImportName="aspnet_Setup_RemoveAllRoleMembers" FunctionName="ShoppingCartModel.Store.aspnet_Setup_RemoveAllRoleMembers" />
-          <FunctionImportMapping FunctionImportName="aspnet_Setup_RestorePermissions" FunctionName="ShoppingCartModel.Store.aspnet_Setup_RestorePermissions" />
-          <FunctionImportMapping FunctionImportName="aspnet_UnRegisterSchemaVersion" FunctionName="ShoppingCartModel.Store.aspnet_UnRegisterSchemaVersion" />
-          <FunctionImportMapping FunctionImportName="aspnet_Users_CreateUser" FunctionName="ShoppingCartModel.Store.aspnet_Users_CreateUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_Users_DeleteUser" FunctionName="ShoppingCartModel.Store.aspnet_Users_DeleteUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_AddUsersToRoles" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_AddUsersToRoles" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_FindUsersInRole" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_FindUsersInRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetRolesForUser" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_GetRolesForUser" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_GetUsersInRoles" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_GetUsersInRoles" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_IsUserInRole" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_IsUserInRole" />
-          <FunctionImportMapping FunctionImportName="aspnet_UsersInRoles_RemoveUsersFromRoles" FunctionName="ShoppingCartModel.Store.aspnet_UsersInRoles_RemoveUsersFromRoles">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ShoppingCartModel.aspnet_UsersInRoles_RemoveUsersFromRoles_Result">
-                <ScalarProperty Name="Column1" ColumnName="Column1" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="aspnet_WebEvent_LogEvent" FunctionName="ShoppingCartModel.Store.aspnet_WebEvent_LogEvent" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

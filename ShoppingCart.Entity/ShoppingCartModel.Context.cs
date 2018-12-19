@@ -27,6 +27,16 @@ namespace ShoppingCart.Entity
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
+        public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
+        public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }
+        public virtual DbSet<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsers { get; set; }
+        public virtual DbSet<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
+        public virtual DbSet<aspnet_Profile> aspnet_Profile { get; set; }
+        public virtual DbSet<aspnet_Roles> aspnet_Roles { get; set; }
+        public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
+        public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
+        public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<City> City { get; set; }
@@ -43,16 +53,6 @@ namespace ShoppingCart.Entity
         public virtual DbSet<UserMaster> UserMaster { get; set; }
         public virtual DbSet<UserRole> UserRole { get; set; }
         public virtual DbSet<ViewProductDetails> ViewProductDetails { get; set; }
-        public virtual DbSet<aspnet_Applications> aspnet_Applications { get; set; }
-        public virtual DbSet<aspnet_Membership> aspnet_Membership { get; set; }
-        public virtual DbSet<aspnet_Paths> aspnet_Paths { get; set; }
-        public virtual DbSet<aspnet_PersonalizationAllUsers> aspnet_PersonalizationAllUsers { get; set; }
-        public virtual DbSet<aspnet_PersonalizationPerUser> aspnet_PersonalizationPerUser { get; set; }
-        public virtual DbSet<aspnet_Profile> aspnet_Profile { get; set; }
-        public virtual DbSet<aspnet_Roles> aspnet_Roles { get; set; }
-        public virtual DbSet<aspnet_SchemaVersions> aspnet_SchemaVersions { get; set; }
-        public virtual DbSet<aspnet_Users> aspnet_Users { get; set; }
-        public virtual DbSet<aspnet_WebEvent_Events> aspnet_WebEvent_Events { get; set; }
         public virtual DbSet<vw_aspnet_Applications> vw_aspnet_Applications { get; set; }
         public virtual DbSet<vw_aspnet_MembershipUsers> vw_aspnet_MembershipUsers { get; set; }
         public virtual DbSet<vw_aspnet_Profiles> vw_aspnet_Profiles { get; set; }

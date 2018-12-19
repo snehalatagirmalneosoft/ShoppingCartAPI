@@ -133,6 +133,10 @@
       <Project>{2742ba96-53dd-40ac-b22f-73cc6c984cc1}</Project>
       <Name>ShoppingCart.DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ShoppingCart.Common\ShoppingCart.Common.csproj">
+      <Project>{D87DB532-DA8E-4869-8202-8227F07D51C2}</Project>
+      <Name>ShoppingCart.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ShoppingCart.Entity\ShoppingCart.Entity.csproj">
       <Project>{2e3a2ecb-252a-40f2-b456-0affde400cdf}</Project>
       <Name>ShoppingCart.Entity</Name>
