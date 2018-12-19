@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMapper;
+using ShoppingCart.Entity;
+using ShoppingCartAPI.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +21,17 @@ namespace ShoppingCartAPI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings
+           .ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+            GlobalConfiguration.Configuration.Formatters
+                .Remove(GlobalConfiguration.Configuration.Formatters.XmlFormatter);
+
+            AutoMapper.Configuration.MapperConfigurationExpression mapperConfig = new AutoMapper.Configuration.MapperConfigurationExpression();
+            mapperConfig.CreateMap<Category, CategoryModel>();
+
+            //very essential
+            Mapper.Initialize(mapperConfig);
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿using ShoppingCart.Common;
+﻿using AutoMapper;
+using ShoppingCart.Common;
 using ShoppingCart.DataAccess;
 using ShoppingCart.Entity;
+using ShoppingCartAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,17 +36,31 @@ namespace ShoppingCartAPI.Controllers
         [Route("GetCategories")]
         public HttpResponseMessage GetCategories()
         {
-            ResponseMessage<List<Category>> objResponseData = new ResponseMessage<List<Category>>();
+            ResponseMessage<List<CategoryModel>> objResponseData = new ResponseMessage<List<CategoryModel>>();
             try
             {
+                List<CategoryModel> categoryModelList = new List<CategoryModel>();
                 List<Category> categories = objCategoryDAL.GetAllCategories().ToList();
-                objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "List Of Available Product Categories", categories, HttpStatusCode.OK);
-
+                if(categories.Count > 0)
+                {
+                    foreach(Category cat in categories)
+                    {
+                        CategoryModel categoryModel = new CategoryModel();
+                        categoryModel = Mapper.Map<Category, CategoryModel>(cat, categoryModel);
+                        
+                        categoryModelList.Add(categoryModel);
+                    }
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "List Of Available Product Categories", categoryModelList, HttpStatusCode.OK);
+                }
+                else  //categories are not available
+                {
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "No categories area available.",  HttpStatusCode.NoContent);
+                }
             }
             catch (System.Exception ex)
             {
                 objErrorLogger.ErrorLog(ex);
-                objResponseData = ResponseHandler<Category>.CreateErrorResponse(objResponseData);
+                objResponseData = ResponseHandler<CategoryModel>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);
         }
@@ -57,19 +73,32 @@ namespace ShoppingCartAPI.Controllers
         /// Post: CategoriesApi/GetCategoryById
         [HttpPost]
         [Route("GetCategoryById")]
-        public HttpResponseMessage GetCategoryById(Category category)
+        public HttpResponseMessage GetCategoryById(int Id)
         {
-            ResponseMessage<Category> objResponseData = new ResponseMessage<Category>();
+            ResponseMessage<CategoryModel> objResponseData = new ResponseMessage<CategoryModel>();
             try
             {
-                Category categoryDetails = objCategoryDAL.GetCategoryDetails(category);
-                objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Category details", categoryDetails, HttpStatusCode.OK);
-
+                Category category = new Category();
+                category.CategoryId = Id;
+                CategoryModel categoryModel = new CategoryModel();
+                if (objCategoryDAL.GetAllCategories().ToList().Any(cat => cat.CategoryId == Id))
+                {
+                    Category categoryDetails = objCategoryDAL.GetCategoryDetails(category);                    
+                    //mapping
+                    categoryModel = Mapper.Map<Category, CategoryModel>(categoryDetails, categoryModel);
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Category details", categoryModel, HttpStatusCode.OK);
+                }
+                else  //category is not available
+                {
+                    //mapping
+                    categoryModel = Mapper.Map<Category, CategoryModel>(category, categoryModel);
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "This category is not available.", categoryModel, HttpStatusCode.Conflict);
+                }
             }
             catch (System.Exception ex)
             {
                 objErrorLogger.ErrorLog(ex);
-                objResponseData = ResponseHandler<Category>.CreateErrorResponse(objResponseData);
+                objResponseData = ResponseHandler<CategoryModel>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);
         }
@@ -84,23 +113,38 @@ namespace ShoppingCartAPI.Controllers
         [Route("AddCategory")]
         public HttpResponseMessage AddCategory(Category category)
         {
-            ResponseMessage<Category> objResponseData = new ResponseMessage<Category>();
+            ResponseMessage<CategoryModel> objResponseData = new ResponseMessage<CategoryModel>();
             try
             {
-                Category newCategory = objCategoryDAL.AddCategory(category);
-                if (newCategory.CategoryId > 0)
+                CategoryModel categoryModel = new CategoryModel();
+                if (objCategoryDAL.GetAllCategories().ToList().Any(cat => cat.CategoryName != category.CategoryName))
                 {
-                    objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Successfully Added A New Category.", newCategory, HttpStatusCode.OK);
+                    Category newCategory = objCategoryDAL.AddCategory(category);
+                    if (newCategory.CategoryId > 0)
+                    {
+                        //mapping
+                        categoryModel = Mapper.Map<Category, CategoryModel>(newCategory, categoryModel);
+                        objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Successfully Added A New Category.", categoryModel, HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        //mapping
+                        categoryModel = Mapper.Map<Category, CategoryModel>(category, categoryModel);
+                        objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Can't Add This Category.", HttpStatusCode.Conflict);
+                    }
                 }
-                else
+                else  // category name is already present
                 {
-                    objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Can't Add This Category.", HttpStatusCode.Conflict);
+                    //mapping
+                    categoryModel = Mapper.Map<Category, CategoryModel>(category, categoryModel);
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "This category is already available.", categoryModel, HttpStatusCode.Conflict);
                 }
+               
             }
             catch (System.Exception ex)
             {
                 objErrorLogger.ErrorLog(ex);
-                objResponseData = ResponseHandler<Category>.CreateErrorResponse(objResponseData);
+                objResponseData = ResponseHandler<CategoryModel>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);
         }
@@ -115,25 +159,44 @@ namespace ShoppingCartAPI.Controllers
         [Route("UpdateCategory")]
         public HttpResponseMessage UpdateCategory(Category category)
         {
-            ResponseMessage<Category> objResponseData = new ResponseMessage<Category>();
+            ResponseMessage<CategoryModel> objResponseData = new ResponseMessage<CategoryModel>();
             try
             {
-                Category updatedCategory = new Category();
-                int isSucceeded = objCategoryDAL.UpdateCategory(category);
-                if (isSucceeded > 0)
+                CategoryModel categoryModel = new CategoryModel();
+                var AllCategories = objCategoryDAL.GetAllCategories().ToList();
+                if (AllCategories.Any(cat => cat.CategoryId == category.CategoryId))
                 {
-                    updatedCategory = objCategoryDAL.GetCategoryDetails(category);
-                    objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Category Has Been Updated Successfully.", updatedCategory, HttpStatusCode.OK);
+                    Category updatedCategory = new Category();
+                    //set created date & time
+                    category.CreatedBy = AllCategories.Where(cat => cat.CategoryId == category.CategoryId).FirstOrDefault().CreatedBy;
+                    category.CreatedOn = AllCategories.Where(cat => cat.CategoryId == category.CategoryId).FirstOrDefault().CreatedOn;
+
+                    int isSucceeded = objCategoryDAL.UpdateCategory(category);
+                    if (isSucceeded > 0)
+                    {
+                        updatedCategory = objCategoryDAL.GetCategoryDetails(category);
+                        //mapping
+                        categoryModel = Mapper.Map<Category, CategoryModel>(updatedCategory, categoryModel);
+                        objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Category Has Been Updated Successfully.", categoryModel, HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        //mapping
+                        categoryModel = Mapper.Map<Category, CategoryModel>(category, categoryModel);
+                        objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Can't Update Category.", categoryModel, HttpStatusCode.Conflict);
+                    }
                 }
-                else
+                else  //category is not available
                 {
-                    objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Can't Update Category.", category, HttpStatusCode.Conflict);
-                }
+                    //mapping
+                    categoryModel = Mapper.Map<Category, CategoryModel>(category, categoryModel);
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "This category is not available.", categoryModel, HttpStatusCode.Conflict);
+                }                    
             }
             catch (System.Exception ex)
             {
                 objErrorLogger.ErrorLog(ex);
-                objResponseData = ResponseHandler<Category>.CreateErrorResponse(objResponseData);
+                objResponseData = ResponseHandler<CategoryModel>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);
         }
@@ -146,32 +209,43 @@ namespace ShoppingCartAPI.Controllers
         /// Delete: CategoriesApi/DeleteCategory
         [HttpDelete]
         [Route("DeleteCategory")]
-        public HttpResponseMessage DeleteCategory(Category category)
+        public HttpResponseMessage DeleteCategory(int Id)
         {
-            ResponseMessage<Category> objResponseData = new ResponseMessage<Category>();
+            ResponseMessage<CategoryModel> objResponseData = new ResponseMessage<CategoryModel>();
             try
             {
-                int isDeleted = objCategoryDAL.DeleteCategory(category);
+                Category category = new Category();
+                category.CategoryId = Id;
+                CategoryModel categoryModel = new CategoryModel();
+                if (objCategoryDAL.GetAllCategories().ToList().Any(cat => cat.CategoryId == Id))
+                {                     
+                    int isDeleted = objCategoryDAL.DeleteCategory(category);
 
-                if (isDeleted > 0)
-                {
-                    objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Category Has Been Deleted.", HttpStatusCode.OK);
+                    if (isDeleted > 0)
+                    {
+                        objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Category Has Been Deleted.", HttpStatusCode.OK);
+                    }
+                    else
+                    {
+                        objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "Can't Delete Category", HttpStatusCode.NoContent);
+                    }
                 }
-                else
+                else  //category is not available
                 {
-                    objResponseData = ResponseHandler<Category>.CreateResponse(objResponseData, "Can't Delete Category", HttpStatusCode.NoContent);
+                    //mapping
+                    categoryModel = Mapper.Map<Category, CategoryModel>(category, categoryModel);
+                    objResponseData = ResponseHandler<CategoryModel>.CreateResponse(objResponseData, "This category is not available.", categoryModel, HttpStatusCode.Conflict);
                 }
             }
             catch (System.Exception ex)
             {
                 objErrorLogger.ErrorLog(ex);
-                objResponseData = ResponseHandler<Category>.CreateErrorResponse(objResponseData);
+                objResponseData = ResponseHandler<CategoryModel>.CreateErrorResponse(objResponseData);
             }
             return Request.CreateResponse(objResponseData.StatusCode, objResponseData);
         }
 
         #endregion
-
-
+        
     }
 }
