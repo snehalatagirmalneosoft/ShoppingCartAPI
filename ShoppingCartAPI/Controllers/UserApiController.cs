@@ -7,6 +7,8 @@ using System.Web.Http;
 using ShoppingCart.Common;
 using ShoppingCart.DataAccess;
 using ShoppingCart.Entity;
+using ShoppingCartAPI.Models;
+using AutoMapper;
 
 namespace ShoppingCartAPI.Controllers
 {
@@ -14,7 +16,7 @@ namespace ShoppingCartAPI.Controllers
     public class UserApiController : ApiController
     {
         UserDAL objUserDAL = new UserDAL();
-        ErrorLogger objErrorLogger;
+        ErrorLogger objErrorLogger = new ErrorLogger();
 
         /// <summary>
         /// 2018/12/17 - Deepanjali Yadav - 
@@ -22,18 +24,16 @@ namespace ShoppingCartAPI.Controllers
         /// </summary>       
         /// <returns>HttpResponseMessage</returns>
         /// Get: UserAPI/GetUserList
-        [Authorize]
-        [HttpPost]
+        [HttpGet]
         [Route("GetUserList")]
         public HttpResponseMessage GetUserList()
         {
             ResponseMessage<List<STP_GetUsers_Result>> objResponseData = new ResponseMessage<List<STP_GetUsers_Result>>();
             try
             {
-                List<STP_GetUsers_Result> userList = objUserDAL.GetUserList().Where(com => com.IsActive == true).ToList();
-
+                List<STP_GetUsers_Result> userList = objUserDAL.GetUserList().Where(com => com.IsActive == true).ToList();              
                 if (userList.Count > 0)
-                {
+                {                  
                     objResponseData = ResponseHandler<STP_GetUsers_Result>.CreateResponse(objResponseData, "List Of Users", userList, HttpStatusCode.OK);
                 }
                 else
@@ -55,14 +55,16 @@ namespace ShoppingCartAPI.Controllers
         /// </summary>       
         /// <returns>HttpResponseMessage</returns>
         /// Get: UserAPI/GetUserById
-        [HttpPost]
+        [HttpGet]
         [Route("GetUserById")]
         public HttpResponseMessage GetUserById(int Id)
         {
             ResponseMessage<STP_GetUserDetails_Result> objResponseData = new ResponseMessage<STP_GetUserDetails_Result>();
             try
             {
-                STP_GetUserDetails_Result userDetail = objUserDAL.GetUserById(Id);
+                UserMaster user = new UserMaster();
+                user.UserId = Id;
+                STP_GetUserDetails_Result userDetail = objUserDAL.GetUserById(user);
 
                 if (userDetail != null)
                 {                  
