@@ -69,6 +69,31 @@ namespace ShoppingCart.DataAccess
                 throw ex;
             }
         }
+
+        /// <summary>
+        /// 2018/12/19 Snehalata Girmal
+        /// Add new User
+        /// </summary>
+        /// <returns>int</returns>
+        public UserDetail AddUsers(UserDetail objUser)
+        {
+            try
+            {
+                using (ShoppingCartEntities db = new ShoppingCartEntities())
+                {
+                    UserDetail objUsernew = db.UserDetail.Add(objUser);
+                    db.SaveChanges();
+                    return objUsernew;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                objErrorLogger.ErrorLog(ex);
+                throw ex;
+            }
+        }
+
+
         #endregion
     }
 }
