@@ -64,7 +64,7 @@ namespace ShoppingCartAPI.Controllers
             {
                 UserMaster user = new UserMaster();
                 user.UserId = Id;
-                STP_GetUserDetails_Result userDetail = objUserDAL.GetUserById(Id);
+                STP_GetUserDetails_Result userDetail = objUserDAL.GetUserById(user);
 
                 if (userDetail != null)
                 {                  
