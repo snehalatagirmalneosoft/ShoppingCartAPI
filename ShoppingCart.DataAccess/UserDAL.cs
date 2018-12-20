@@ -48,13 +48,13 @@ namespace ShoppingCart.DataAccess
         /// </summary>
         /// <returns>List<UserMaster></returns>
         /// Get: UserDAL/GetUserById
-        public STP_GetUserDetails_Result GetUserById(int Id)
+        public STP_GetUserDetails_Result GetUserById(UserMaster user)
         {
             try
             {
                 using (ShoppingCartEntities db = new ShoppingCartEntities())
                 {
-                    var UserId = new SqlParameter("@UserId", Id);
+                    var UserId = new SqlParameter("@UserId", user.UserId);
                     STP_GetUserDetails_Result userDetail= db.Database.SqlQuery<STP_GetUserDetails_Result>("STP_GetUserDetails @UserId", UserId).FirstOrDefault();
                     if (userDetail != null)
                     {
