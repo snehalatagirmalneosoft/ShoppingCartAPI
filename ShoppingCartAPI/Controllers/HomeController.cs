@@ -16,6 +16,7 @@ namespace ShoppingCartAPI.Controllers
         //testing by vaishnavi
         public ActionResult Index()
         {
+            //Git Testing - by Sid
             // Demo purpose only created database first approach using ShoppingCartEntities
             //using (ShoppingCartEntities db = new ShoppingCartEntities())
             //{
